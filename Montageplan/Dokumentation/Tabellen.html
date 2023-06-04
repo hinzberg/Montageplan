@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Montageplan.sdf Database Schema</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type="text/css">
+                    body { background-color: #fff; color: #000; font-family: Consolas, monospace}
+                    a:link { color: #03d; }
+                    a:visited { color: #039; }
+                    a:hover { color: #09f; }
+                    table { border-collapse: collapse; width: 100%; }
+                    table caption { color: #666; text-align: right; font-size: 65%; margin-bottom: .5ex; }
+                    table td, table th { border: solid 1px #666; border-collapse: collapse; padding: .3ex .5ex; vertical-align: top; }
+                    table tbody tr:hover { background-color: #ffc; }
+                    table thead th { text-align: left; background-color: #ccc; }
+                    table tbody th { text-align: left; white-space: nowrap; }
+                    .table { page-break-inside: avoid; }
+                    .pk { float: right; cursor: arrow; color: #999; }
+                    .type { white-space: nowrap; }
+                    .null { text-align: center; }
+                    .flag { white-space: nowrap; font-size: 70%; display: inline-block; border: solid 1px #ccc; padding: .25ex .5ex; background-color: #ddd; margin-right: 1ex; }
+                    .tocref { float: right; text-decoration: none; font-weight: normal; }
+                    .footer { text-align: center; margin-top: 1em; font-size: 80%;}
+                    li.view:before { content: "VIEW"; font-size: 70%; display: inline-block; border: solid 1px #ccc; padding: .25ex .5ex; background-color: #ddd; margin-right: 1ex; }
+                    @media print {
+                    body { font-size: .8em; }
+                    #toc, .tocref { display: none; }
+                    a:link, a:visited { color: #000; text-decoration: none; }
+                    }
+                </style>
+  </head>
+  <body>
+    <h1>Montageplan.sdf Database Schema</h1>
+    <div id="toc">
+      <ul>
+        <li class="table"><a href="#Engagements">Engagements</a></li>
+        <li class="table"><a href="#EngagementsMitarbeiter">EngagementsMitarbeiter</a></li>
+        <li class="table"><a href="#EngagementsProjekte">EngagementsProjekte</a></li>
+        <li class="table"><a href="#Fehlzeitarten">Fehlzeitarten</a></li>
+        <li class="table"><a href="#Fehlzeiten">Fehlzeiten</a></li>
+        <li class="table"><a href="#Funktionen">Funktionen</a></li>
+        <li class="table"><a href="#Kolonnen">Kolonnen</a></li>
+        <li class="table"><a href="#KolonnenMitarbeiter">KolonnenMitarbeiter</a></li>
+        <li class="table"><a href="#MetaData">MetaData</a></li>
+        <li class="table"><a href="#Mitarbeiter">Mitarbeiter</a></li>
+        <li class="table"><a href="#Projekte">Projekte</a></li>
+        <li class="table"><a href="#Users">Users</a></li>
+      </ul>
+    </div>
+    <div class="table">
+      <h2 id=""><a href="#toc" class="tocref">⇧</a>
+        Database Properties
+      </h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type">Locale Identifier</td>
+            <td class="type">1031</td>
+          </tr>
+          <tr>
+            <td class="type">Encryption Mode</td>
+            <td class="type">Platform Default</td>
+          </tr>
+          <tr>
+            <td class="type">Case Sensitive</td>
+            <td class="type">False</td>
+          </tr>
+          <tr>
+            <td class="type">Database</td>
+            <td class="type">C:\Users\Mike\Desktop\Montageplan.sdf</td>
+          </tr>
+          <tr>
+            <td class="type">ServerVersion</td>
+            <td class="type">4.0.8876.1</td>
+          </tr>
+          <tr>
+            <td class="type">DatabaseSize</td>
+            <td class="type">327680</td>
+          </tr>
+          <tr>
+            <td class="type">Created</td>
+            <td class="type">30.10.2013 10:41</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Engagements"><a href="#toc" class="tocref">⇧</a>Table Engagements</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Engagements__0000000000000080">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>KolonneId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <td class="type">datetime</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="EngagementsMitarbeiter"><a href="#toc" class="tocref">⇧</a>Table EngagementsMitarbeiter</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__EngagementsMitarbeiter__00000000000000A0">◆</span>EngagementsId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag" title="FK_EngagementsId">⇨ <a href="#Engagements">Engagements</a>.Id</span></td>
+          </tr>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__EngagementsMitarbeiter__00000000000000A0">◆</span>MitarbeiterId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag" title="FK_MitarbeiterId">⇨ <a href="#Mitarbeiter">Mitarbeiter</a>.Id</span></td>
+          </tr>
+          <tr>
+            <th>IstFuehrer</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="EngagementsProjekte"><a href="#toc" class="tocref">⇧</a>Table EngagementsProjekte</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__EngagementsProjekte__00000000000000D5">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>EngagementId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag" title="FK_EngagementId">⇨ <a href="#Engagements">Engagements</a>.Id</span></td>
+          </tr>
+          <tr>
+            <th>ProjektId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>StartTime</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>EndTime</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Fehlzeitarten"><a href="#toc" class="tocref">⇧</a>Table Fehlzeitarten</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Fehlzeitarten__0000000000000056">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>Bezeichnung</th>
+            <td class="type">nvarchar (30)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Fehlzeiten"><a href="#toc" class="tocref">⇧</a>Table Fehlzeiten</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Fehlzeiten__0000000000000044">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>FehlzeitartId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>MitarbeiterId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag" title="FK_MitarbeiterId1">⇨ <a href="#Mitarbeiter">Mitarbeiter</a>.Id</span></td>
+          </tr>
+          <tr>
+            <th>Startdatum</th>
+            <td class="type">datetime</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Endedatum</th>
+            <td class="type">datetime</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Funktionen"><a href="#toc" class="tocref">⇧</a>Table Funktionen</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Funktionen__0000000000000034">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td class="type">nvarchar (30)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Kolonnen"><a href="#toc" class="tocref">⇧</a>Table Kolonnen</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Kolonnen__0000000000000066">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>Nummer</th>
+            <td class="type">nvarchar (30)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Bezeichnung</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>IsActive</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>HexColor</th>
+            <td class="type">nchar (9)</td>
+            <td class="null">☐</td>
+            <td><span class="flag">DEFAULT '#000000'</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="KolonnenMitarbeiter"><a href="#toc" class="tocref">⇧</a>Table KolonnenMitarbeiter</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__KolonnenMitarbeiter__00000000000000B2">◆</span>MitarbeiterId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag" title="FK_MitarbeiterId2">⇨ <a href="#Mitarbeiter">Mitarbeiter</a>.Id</span></td>
+          </tr>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__KolonnenMitarbeiter__00000000000000B2">◆</span>KolonneId</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag" title="FK_KolonneId">⇨ <a href="#Kolonnen">Kolonnen</a>.Id</span></td>
+          </tr>
+          <tr>
+            <th>IstFuehrer</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="MetaData"><a href="#toc" class="tocref">⇧</a>Table MetaData</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__MetaData__0000000000000006">◆</span>MetaKey</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Value</th>
+            <td class="type">nvarchar (400)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Mitarbeiter"><a href="#toc" class="tocref">⇧</a>Table Mitarbeiter</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Mitarbeiter__000000000000002A">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>IsActive</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Vorname</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>KannFuehrerSein</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FunktionId</th>
+            <td class="type">int</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Projekte"><a href="#toc" class="tocref">⇧</a>Table Projekte</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Projekte__0000000000000018">◆</span>Id</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">IDENTITY (1,1)</span></td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Startdatum</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Endedatum</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>HexColor</th>
+            <td class="type">nchar (9)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>IsCompleted</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>IsTemplate</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td><span class="flag">DEFAULT 1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Users"><a href="#toc" class="tocref">⇧</a>Table Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY PK__Users__0000000000000072">◆</span>Username</th>
+            <td class="type">nvarchar (30)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Password</th>
+            <td class="type">nvarchar (30)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>IsAdministrator</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+                    Generated by <a href="http://SqlDbDoc.codeplex.com/">DB&gt;doc</a> and <a href="http://sqlcetoolbox.codeplex.com/">SQL Server Compact Toolbox</a> on
+                    October 30, 2013, 11:35:05</div>
+  </body>
+</html>

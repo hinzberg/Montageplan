@@ -1,0 +1,100 @@
+﻿<Window x:Class="Montageplan.EasyOptions.EasyOptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Icon="..\..\Resources\montysymbol.png"
+    FontFamily="Arial"
+        FontSize="8.8pt"
+    Title="Optionen" Height="500" Width="800" WindowStartupLocation="CenterScreen" 
+    Loaded="WindowLoaded"
+    ResizeMode="NoResize">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--Style für Navigation-->
+            <Style TargetType="ListBoxItem">
+                <Setter Property="OverridesDefaultStyle" Value="True" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border Name="theBorder">
+                                <ContentPresenter HorizontalAlignment="Stretch" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="theBorder" Property="Background" Value="{StaticResource SelectedItemBrush}"/>
+                                 </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+    <Window.Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="Background" Value="{StaticResource windowBackgroundBrush}"/>
+        </Style>
+    </Window.Style>
+
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        
+        <ListBox Name="NavigationListBox" 
+                 SelectionChanged="NavigationListBoxSelectionChanged"
+                 Grid.Row="0" Grid.Column="0" BorderThickness="0" Background="#2fffffff">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Name="rootStackPanel" Orientation="Horizontal" 
+                                Margin="0,2,0,2" HorizontalAlignment="Stretch" Background="Transparent">
+                        <TextBlock Text="{Binding PanelName}" 
+                                   FontSize="11pt" Margin="4,3,0,3" 
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                            <Setter TargetName="rootStackPanel" Property="Background" Value="Gainsboro" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--Vertikaler Teiler-->
+        <StackPanel Grid.Column="1"  Grid.Row="0"
+                    Orientation="Vertical" 
+                    VerticalAlignment="Stretch" Background="{StaticResource windowBackgroundAlternativBrush}"/>
+
+        <!--Platz für Pannels-->
+        <StackPanel Grid.Row="0" Grid.Column="2" Background="#2fffffff"
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Margin="5" Name="ContentPanel" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </StackPanel>
+
+         <!--Die Schaltflächen, unten-->
+        <DockPanel Background="{StaticResource windowBackgroundAlternativBrush}"
+             Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+            <Button DockPanel.Dock="Right" Height="23" Name="btnAbbrechen" Content="Abbrechen" Width="85" Margin="0,0,5,0" Click="BtnCancelClick" />
+            <Button DockPanel.Dock="Right" Height="23" Name="btnOK" Width="85" Content="Übernehmen" IsDefault="True" Margin="0,0,5,0" Click="BtnOkClick" />
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+    </Grid>
+</Window>
+

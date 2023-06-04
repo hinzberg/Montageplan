@@ -1,0 +1,677 @@
+﻿
+[2013-10-21] [0.90.5]
+[BACKUP 0.90.5] [RELEASE]
+[!mw]
+- Default-Farbe für Projekte von Weiß auf Pastellgrün
+- BUGFIX Wenn man ein Projekt (kein Projekt-Template) mit Doppelklick oder per Kontextmenü erzeugt und eine Endzeit angibt,
+  dann wurde das projekt auch am nächsten Tag hinzugefügt
+
+[2013-10-18] [0.90.4]
+[BACKUP 0.90.4] [RELEASE]
+[!mw]
+- Neue Projekte eines Tages können jetzt mit Kontextmenü angelegt werden
+- Neues Projekt zu einem Tag anlegen: Der Doppelklick funktioniert jetzt im "freien" Bereich (wo keine Mitarbeiter oder Projekte gezeichnet sind)
+- Der Kontextmenüeintrag "Termin entfernen" ist entfernt. Der Eintrag hatte die selbe Funktion wie "Alle Projekte entfernen"
+
+[2013-10-17] [0.90.3]
+[!mw]
+- Bei der Projekteauswahl auf der linken Seite und im Projekte-Listenfenster werden nur "Template"-Projekte angezeigt
+- DATENBANKUPDATE 34: Die Spalte "IsTemplate" der Projekte-Tabelle hinzugefügt
+- Mitarbeiter zur Terminauswahl sind in einem eigenen Panel bei den Tages-Views
+- Die Konstanten für die Breite der Kalender-Views sind in AppConfig ausgelagert
+
+[2013-10-16] [0.90.3]
+[!hh]
+- MitarbeiterEditWindow, Steuerelemente für Wiederkehrende Ausfalltage und Urlaub/Krankheit sind unsichtbar da ohne Funktion
+- MitarbeiterEditWindow ist jetzt kleiner.
+- CalenderView, ScrollViewer um die Listbox ist jetzt sichtbar um alle Tage auf ein aml zu scrollen.
+- CalenderView, Panel mitarbeiterPanel für die Mitarbeiterlisten der Tage.
+- CalenderPresenter, SetMitarbeiterListsVisibility macht das Panel/Row für die Mitarbeiterliste sichtbar/unsichtbar
+- CalendarEngagementPresenter und CalendarEngagementView so geändert, das ohne Srollbar acht Termine pro Kolonne möglich sind.
+- CalendarEngagementView noProjektText geändert.
+- CalendarEngagementPresenter neue Methode: NoProjektGridMouseDown um Projekte ohne Vorlage anzulegen.
+- CalendarEngagementView mitarbeiterListBox so geändert, das sechs Mitarbeiter gleichzeitig angezeigt werden können
+- Neue Eigenschaft in Projekt, IsTemplate. Um Projekte anzulegen die keine Vorlagen sind.
+- Doppelklick auf noProjektText öffnet ProjektEditWindow (in einer abgewandelten Version).
+
+[2013-08-20] [0.90.3]
+[BACKUP 0.90.3] [RELEASE]
+[!mw]
+- Das Startfenster ist nicht mehr sichtbar
+- Wenn man die Optionen schließt, dann wird der komplette Kalender aktualisiert
+- Linie über die Mitarbeiter-Auswahl
+- Firma der Assembly hinzugefügt
+
+[2013-08-19] [0.90.2]
+[!hh]
+- Defaultfarbe einer neuen Kolonne ist nicht mehr schwarz sondern blau.
+- Schleier (headerBackgroundBrush) ist heller.
+- CalendarEngagementView, Layout und Textausrichtung der Projekte-Items
+- CalendarEngagementPresenter Singular/Plural Unterscheidung beim Tooltip Text der Projekteanzahl.
+- Wird im TimePickerWindow "Ganztägig" deaktiviert, wird die Zeitspanne aktualisiert und angezeigt. 
+- Projekte im CalendarEngagementView können nicht länger selektiert werden.
+[BACKUP 0.90.2]
+[!mw]
+- Design von Terminen verändert + alle benötigten Funktionen, um mehrere Projekte einer Kolonne an einem Tag zuordnen zu können
+- Fehlermeldung, wenn die optionale Endzeit eines projektes vor der Startzeit liegt (Anlegen/Bearbeiten von Projekten)
+- TimePickerControl: Start- und Endzeit-ComboBoxen können disabled werden. Wenn beides Disabled ist, ist die Stundnezeit nicht sichtbar
+
+[2013-08-17] [0.90.2]
+[!mw]
+- Darstellung von Terminen verändert. Die projekte können zu unterschiedlichen Zeiten an einem Tag stattfinden. Somit kann man mehrere
+  Projekte auf einem "Termin" ziehen (Terminbezeichnung aktuell unglücklich)
+- DATENBANKUPDATE 33: Die Tabelle "CalendarDates" wird entfernt
+- DATENBANKUPDATE 32: Die Spalte "ProjektId" der Engagements-Tabelle wird entfernt
+- DATENBANKUPDATE 31: Die Spalte "CalendarDateId" der Engagements-Tabelle wird entfernt
+- DATENBANKUPDATE 30: Entfernt den Fremdschlüssel "FK_CalendarDateId" der Engagements-Tabelle
+- DATENBANKUPDATE 29: Entfernt den Unique "UQ_Engagements1" der Engagements-Tabelle
+- DATENBANKUPDATE 28: Die Spalte "Date" der Engagements-Tabelle nimmt keine Null-Werte mehr an
+- DATENBANKUPDATE 27: Konvertiert die alte Engagement-Struktur der Datenbank auf die neue
+- DATENBANKUPDATE 26: Die Spalte "Date" wird der Engagements-Tabelle neu hinzugefügt
+- DATENBANKUPDATE 25: Erstellt den EngagementsId-Fremdschlüssel für die Engagements-Projekttabelle
+- DATENBANKUPDATE 24: Erstellt die Tabelle "EngagementsProjekte"
+
+[2013-08-15] [0.90.2]
+[!mw]
+- Zu einem Termin (Engagement) können mehere Projekte zugeordnet werden, die zu verschiedenen Uhrzeiten stattfindet (angefangen umzustellen)
+
+[2013-08-12] [0.90.2]
+[!mw]
+- Beim Projekte-Editfenster kann man jetzt optional die Uhrzeiten auswählen (Start und Ende)
+- Wenn man neue Projekte anlegt oder vorhandene editiert, wird die "UpdateView"-Methode nicht mehr doppelt aufgerufen
+[!hh]
+- TimePickerControl
+
+[2013-08-10] [0.90.2]
+[!mw]
+- Wenn ein Mitarbeiter auf einen Termin gezogen wird, dann wird er jeden Tag hinzugefügt, so lange das Projekt andauert.
+  Das Projekt muss ein Endedatum haben
+
+[2013-08-06] [0.90.1]
+[BACKUP 0.90.1]
+[!mw]
+- Beim Programmstart wird nachdem erfolgreichen Anmelden ein Datenbank-Backup erstellt (z. B.: "Montageplan 06.08.2013 21.52.18 [0.90.1].sdf")
+- Die Farbe einer Kolonne wird in der Datenbank verwaltet
+- DATENBANKUPDATE 23: Neue Spalte für Kolonnen: HexColor
+- Die max. Zeichenlänge für alle Eigenschaften von Mitarbeitern und die max. Länge von Funktionsnamen wird jetzt in den Oberflächen abgefangen
+- Die Bezeichnung eines Mitarbeiter wird in der Datenbank verwaltet
+- DATENBANKUPDATE 22: Neue Spalte für Mitarbeiter: Description
+
+[2013-08-05] [0.90.0]
+[BACKUP 0.90.0]
+[!hh]
+- MitarbeiterViewModel, Mitarbeiter Name, Vorname und Bezeichung wird den Optionen entsprechend angezeigt.
+- CalenderDayPresenter, Datum wird jetzt in der konfigurierten Farbe angezeigt. Aktueller Tag bekommt kräftigeren Farbton. 
+- ColorPickerWindow erweitert um im Konstruktor einen Alpha-Wert zu übegeben. So können auch kräftigere Farben eingestellt werden.
+  Wichtig für Text auf farbigem, nicht weissem, Hintergrund. z.B. Datum im Tag.
+- Druck-Button in Vorschau wird erst aktiv wenn FlowDocument komplett geladen wurde.
+- Verbesserung an der Druckfunktion um das Dokument besser auf dem Papier zu zentrieren.
+- Ob vor der Kolonnenbezeichnung noch "Kolonne" steht kann in den Optionen gesteuert werden (Auch Druck).
+- Option um den zusätzlichen Bezeichner "Kolonne" auszublenden. (Settings.ShowKolonnePrefix)
+
+[2013-08-04] [0.90.0]
+[!hh]
+- Option um für Datum die Farbe zu wählen. (Settings.DayBrush)
+- Option um für Mitarbeiter den Namen und Vornamen anzuzeigen. (Settings.MitarbeiterDisplayWithName/MitarbeiterDisplayWithVorname)
+- Option um für Mitarbeiter die Bezeichnung anzuzeigen. (Settings.MitarbeiterDisplayWithBezeichnung)
+- Optionen für Druck (Seitenränder)
+- Erweiterungen AppConfig für OptionenDruck (Print)
+- Bezeichnung für Mitarbeiter wird im Listenfesnter angezeigt
+- Bezeichnung für Mitarbeiter in MitarbeiterEditWindow
+- Neue Eigenschaft "Bezeichnung" für Mitarbeiter, auch ViewModel
+- Farbe für Kolonne wird im Listenfesnter angezeigt
+- Farbe für Kolonne in KolonneEditWindow
+- Neue Eigenschaft KolonneColorBrush in Kolonne.cs, auch ViewModel
+- ToolbarImageBrushes überarbeitet.
+
+[2013-07-16] [0.90.0]
+[BACKUP 0.90.0] [RELEASE]
+[!mw]
+- ReleaseState (wird in der Titelleiste angezeigt) von Alpha auf Beta gesetzt
+- Projekte, Mitarbeiter und Kolonnen kann man nicht mehr löschen (Buttons und Menüs disabled)
+- BUGFIX Wenn man ein Projekt auf einen Kalendertag zieht, wird das Projekt auf alle folgende Tage gezogen, bis das Endedatum erreicht wurde,
+  falls vorhanden (Das Datum wurde nie verändert und alle Tage wurden auf den selben Tag gesetzt, wo das Projekt drauf gezogen wurde)
+
+[2013-07-15] [0.50.3]
+[!mw]
+- Man kann keine Mitarbeiter an den jeweiligen Kalendertagen einer Kolonne entfernen, wenn kein Termin vorliegt bzw. kein Projekt
+  gesetzt ist
+- Wenn man bei Kolonnen zusätzliche Mitarbeiter hinzufügt/entfernt, dann werden sie den einzelnen Kolonnen an den jeweiligen
+  Kalendertagen hinzugefügt. Termine bzw. Tage, an denen Projekte gesetzt wurden, wird die Kolonnen-Mitarbeiterveränderung nicht wirksam
+
+[2013-07-14] [0.50.3]
+[!mw]
+- BUGFIX Das Funktionenfenster hat sich nicht geschlossen, wenn der OK-Button geklickt wurde
+
+[2013-07-10] [0.50.3]
+[!mw]
+- Die zusätzlichen Mitarbeiter einer Kolonne werden in dem Kolonnen-Bearbeitenfenster angezeigt. In der ToolBar wird nur noch der
+  Bearbeiten-Button angezeigt. Das Kontextmenü fällt weg, da man die zusätzlichen Mitarbeiter nur noch in dem "Choose-Window" bearbeiten kann
+
+[2013-07-05] [0.50.3]
+[!mw]
+- Man kann zu einer Kolonne mehrere Mitarbeiter zuweisen. Diese werden in der Datenbank gespeichert
+
+[2013-07-04] [0.50.3]
+[BACKUP 0.50.3]
+
+[2013-07-02] [0.50.3]
+[!hh]
+- ProjektItemTemplate, blinkender Text
+- Neuer Trigger Projektstatus NoTime in ProjektItemTemplate.
+- Neuer Status für Projekte, NoTime für Projekte ohne Start- Enddatum. 
+- Seperates Error Logging für LoadEntitiesFromDatabase in MainPresenter.
+- MessageBoxWindow für Ja/Nein-Fragen implementiert.
+
+[2013-07-01] [0.50.2]
+[BACKUP 0.50.2]
+[!mw]
+- Nachricht und Validierung ist wieder aktiv, dass ein Projekt nicht auf einen Termin gezogen werden darf, wenn das Auslaufdatum
+  an diesem Tag bereits überschritten wurde
+- Es können wieder Kolonnenführer gesetzt werden (Neue Struktur, keine Spalte mehr in der Kolonnen-Tabelle,
+  sondern eine neue Tabelle "KolonnenMitarbeiter")
+
+[2013-06-30] [0.50.2]
+[!mw]
+- DATENBANKUPDATE 21: Entfernt die Spalte "FuehrerId" von der Kolonnentabelle. Diese Spalte wird nicht mehr benötigt,
+  nachdem das Update "18" ausgeführt wurde.
+- DATENBANKUPDATE 20: Fremdschlüssel für die Spalte "KolonneId" der Tabelle "KolonnenMitarbeiter"
+- DATENBANKUPDATE 19: Fremdschlüssel für die Spalte "MitarbeiterId" der Tabelle "KolonnenMitarbeiter"
+- DATENBANKUPDATE 18: Erstellt die Kolonnen-Mitarbeitertabelle
+- Wenn ein Projekt noch keinem Termin zugewiesen wurde und das Startdatum heute oder vor heute ist, dann wird das
+  Projekt grau angezeigt (soll später blinken, vorerst zum Testen grau)
+
+[2013-06-26] [0.50.2]
+[!mw]
+- Unter Ansicht kann man die Mitarbeiterlisten anzeigen und ausblenden
+- Wenn man Projekte einen Termin zuweist oder entfernt, wird auf der linken Projektauswahl das Projekt rot oder schwarz markiert.
+  Rot markiert wird das Projekt, wenn es keinen Termin zugewiesen ist
+- NotificationCenter implementiert
+
+[2013-06-23] [0.50.1]
+[BACKUP 0.50.1]
+[!hh]
+- CustomControl Ordner
+- Toolbar Control mit Xaml als Symbole
+- MitarbeiterListWindow mit Toolbar
+- FunktionenListWindow mit Toolbar
+- KolonneListWindow mit Toolbar
+- ProjektListWindow mit Toolbar
+- ProjektEditPresenter: Defaultprojektname mit länger "Projekt1"
+- WORKAROUND: ReplaceKolonneAtDate
+- UserListWindow mit Toolbar
+- CalendarEngagementView, Größere Schriftart für Projektname und Kolonnenbezeichnung
+- ProjektDetailsFlowTemplate, Größere Schriftart für Projektname und Kolonnenbezeichnung
+- TimespanSelectWindow Layout geändert. Start und Enddatum jetzt nebeneinander.
+- TimespanSelectWindow jetzt mit DualDatePicker
+- CalenderEngagementPresenter, Grau für Platzhalter jetzt heller.
+- ListView im KolonneEditWindow
+- MitarbeiterChooseWindow und Presenter zu Auswahl weiterer Mitarbeiter einer Kolonne. (Nur View)
+- DatePicker jetzt ein UserControl in einem Fenster.
+- DualDatePickerWindow
+- ProjektEditWindow Layout geändert. Start und Enddatum jetzt nebeneinander.
+- ProjektEditWindow verwendet jetzt ein DualDatePickerWindow
+
+[2013-06-09] [0.50.00]
+[BACKUP 0.50.0] [RELEASE]
+[!hh]
+- CalendarKolonneView, Höhe ListBox angepasst. Scrollbar jetzt nicht mehr abgeschnitten.
+- DayMitarbeiterRepository : GetSortedByFuehrer, Sortiert Mitarbeiter so das der Führer immer der erste Eintrag ist,
+  alle anderen Mitarbeiter werden nach Namen sortiert
+[!mw]
+- Icon verändert (ohne Rahmen)
+- (DayMitarbeiter Hat kein PropertyChanged-Event mehr)
+- BUGFIX Wenn ein Mitarbeiter aus einem Termin entfernt wurde und somit wieder frei für dieses Tag, wurde er in der unteren
+  Mitarbeiter-Auswahlliste nicht wieder grün. Dies nur bei einem Mitarbeiter, der beim Programmstart schon zum Termin zugeordnet
+  wurde (Aus der Datenbank geladen)
+- (Die Dateien "ideas.txt", "als nächstes.txt" und "BekannteProbleme.txt" entfernt. die Infos stehen alle in "todo.txt")
+- Beim Bearbeitenfenster eines Mitarbeiters, sind die Urlaubs/Krankentage vorerst nicht anklickbar
+- Die Mitarbeiterauswahl unten in jedem Kalendertag ist nach unten ausgerichtet. Sonst "schweben" die Mitarbeiter in dem Bereich
+  am oberen Bereich (sah komisch aus)
+- Der Expander in jeder Kolonne im Kalender ist unsichtbar (sah nicht gut aus)
+- Wenn ein Termin entfernt wird, soll wird das verknüpfte Datum aus der Datenbanktabelle entfernt werden
+- Termin im Kalender: Kontextmenüeintrag ist nicht mehr "Projekt entfernen", sondern "Termin entfernen". Dieser Eintrag ist über den
+  kompletten Termin verfügbar (Kolonne, Projekt oder Mitarbeiter eines Termins)
+- Bei den Tagen wird das ausgewählte ListBoxItem, in der Kolonnen-Mitarbeiterliste und in der unteren Mitarbeiterliste,
+  nicht farblich markiert
+- ("CalendarKolonneView" und "CalendarKolonnePresenter" heißen jetzt "CalendarEngagementView" und "CalendarEngagementPresenter")
+
+[2013-06-08] [0.04.9] [!mw]
+- [BACKUP 0.04.9]
+- Mitarbeiter eines Tages können nur noch auf Kolonnen bzw. Engagements vom selben Tag losgelassen werden, müssen noch verfügbar sein
+  und es muss ein Projekt der Kolonne zugeordnet sein.
+  Die Drop-EventHandler werden auch nicht mehr doppelt und dreifach aufgerufen, sondern nur einmal
+- DragDropHelper in 2 neu Klassen unterteilt "SourceDragHelper" und "TargetDropHelper"
+
+[2013-06-07] [0.04.9] [!mw]
+- Mitarbeiter, die Engagements zugeordnet werden, können in der Datenbank gespeichert und entfernt werden
+- Wenn man einen Führer bei einer Kolonne verändert, wird dieses in den Tageskolonnen aktualisiert, die noch nicht als Auftrag gelten (Engagement)
+
+[2013-06-06] [0.04.8] [!mw]
+- [BACKUP 0.04.8]
+- Engagements können gespeichert oder aktualisiert werden, wenn ein Projekt auf eine "Tages-Kolonne" gezigen wird.
+  Die Engagements werden auch geladen
+- [MERGE]
+
+[2013-06-05] [0.04.7] [!hh]
+- Reihenfolge Menüitems Verwatung erneut geändert.
+- Funktion der Mitarbeiter wird als Tooltip angezeigt im CalendarMitarbeiterView.
+- Funktion der Mitarbeiter wird als Tooltip angezeigt im CalendarDayView.
+- DatePicker zeigt in der Überschrift jetzt das selektierte Datum an.
+- Im Mitarbeiter-Edit-Fenster ist es jetzt möglich, Mitarbeiter geziehlt ohne Funktion anzulegen oder Mitarbeitern eine Funktion wieder weg zu nehmen.
+- ComboBox für zweiten Mitarbeiter im KolonneEditWindow unsichtbar gemacht.
+- ProjektEditPresenter, bessere Message-Texte.
+
+[2013-06-05] [0.04.7] [!mw]
+- Klassen vorbereitet, um Engagements mit ihren Verknüpfungen aus der Datenbank zu lesen, zu speichern und zu löschen
+- DayKolonneContainer heißt Engagement
+
+[2013-06-04] [0.04.7] [!mw]
+- [BACKUP 0.04.7]
+- Datenbankupdate 11-17: Neue Tabellen, um Tag-Projekte-Kolonnen-Mitarbeiter-Verknüpfungen zu verwalten
+- Datenbankupdate 10: Neue Tabelle Users
+- Alle Listen-Verwaltungsfenster sind jetzt sortiert (Keine Binding-Aufhebung mehr)
+- BUGFIX Wenn man ein projekt bearbeitet und kein Startdatum und/oder kein Endedatum angegeben hatte, gab es einen Datenbankfehler.
+  Null-Werte wurden nicht in DBNull-Werte konvertiert
+- [MERGE]
+
+[2013-06-03] [0.04.7] [!hh]
+- Tooltip Style
+- Erweiterungen MessageBoxWindow mit Symbolen
+- Tooltip für Mitarbeiter im CalendarMitarbeiterView
+- Neue Variable in AppConfig: UserCanModify
+* Wenn false: Alle Menüpunkte im Hauptmenü unter Verwaltung werden inaktiv
+* Wenn false: Alle Menüpunkte im CalendarKolonneView werden inaktiv
+* Wenn false: Kein Drag & Drop möglich
+
+[2013-06-02] [0.04.7] [!hh]
+- Listview aktualisiert sich, nachdem eine Kolonne hinzugefügt wurde.
+- Reihenfolge der Menuitems unter Verwaltung geändert da Mitarbeiter vor den Kolonnen angelegt werden müssen.
+- CalendarKolonneView, Contextmenü für Projekt entfernen. Menüpunkte Texte angepasst.
+- CalendarKolonnePresenter: Der Menüpunkt "Mitarbeiter als Kolonnenführer setzten" ist inaktiv wenn man schon Führer ist.
+- CalendarKolonnePresenter: Funktion um Projekte zu entfernen.
+- MessageBoxWindow
+- Erweiterungen MessageBoxHelper
+  
+[2013-06-01] [0.04.6] [!mw]
+- [BACKUP 0.04.6]
+- [MERGE]
+- Fehlzeiten kann man jetzt auch in der Datenbank speichern/löschen oder aktualisieren. Diese Datenbankfunktionen sind noch nicht integriert
+- Bei der Kolonnen-Liste gibt es kein Abbrechen-Button mehr und alles wird in der DB gespeichert/gelöscht oder aktualisiert
+- Aktuellste Datenbankversion ist 9
+- Die Datenbankstruktur wurde verändert
+
+[2013-06-01] [0.04.5] [!hh]
+- CalendarKolonnePresenter zeigt jetzt auch die Kolonnenbezeichnung an.
+- DatePickerWindow hat jetzt eine Funktion um zum heutigen Tag zu springen.
+- Progamm hat jetzt eine Funktion um sämtliche Kolonnen auf und zu zuklappen.
+- Hat ein Tag mehr ein fünf Kolonnen wird der Ausdruck auf mehrere Seiten verteilt.
+
+[2013-05-31] [0.04.5] [!mw]
+- [BACKUP 0.04.5]
+- [MERGE]
+- Mitarbeiter-Fehlzeitenverwaltung vorbereitet (DbTable-Klassen)
+- BUGFIX Fehlerhafter Spaltenname "FehlzeitartId" von der Tabelle "Fehlzeiten" 
+
+[2013-05-30] [0.04.5] [!hh]
+- Drucken
+
+[2013-05-30] [0.04.5] [!mw]
+- Mitarbeiter werden mit Funktionen verknüpft
+- Bei der Funktionen-Liste gibt es kein Abbrechen-Button mehr und alles wird in der DB gespeichert/gelöscht oder aktualisiert
+- Bei der Mitarbeiterliste gibt es kein Abbrechen-Button mehr und alles wird in der DB gespeichert/gelöscht oder aktualisiert
+- Bei der Projekteliste gibt es kein Abbrechen-Button mehr und alles wird in der DB gespeichert/gelöscht oder aktualisiert
+- BUGFIX In der Mitarbeiter-Tabelle hieß das Feld "KannFuhererSein"
+- Funktion ist beim Mitarbeiter kein Pflichtfeld mehr
+- [BACKUP 0.04.4]
+- [MERGE]
+
+[2013-05-30] [0.04.4] [!hh]
+- Drucken
+
+[2013-05-28] [0.04.4] [!hh]
+- Nutzerverwaltung mit Liste und EditWindow.
+- NEU Klasse User, für die Nutzer der Anwendung.
+
+[2013-05-26] [0.04.4] [!hh]
+- DayMitarbeiterViewModel hat jetzt eine Eigenschaft UniqueDay für den zugehörigen Tag. (Um Tageübergreifendes Drag  zu verhindern).
+- Style & Layout Menü und Contextmenü
+- Funktionen im Funktionenfenster werden jetzt sortiert angezeigt.
+- Neue Funktionen - mit unterschiedlichem Namen - können eingefügt werden.
+- Neue Kolonnen - mit unterschiedlichem Nummern - können eingefügt werden.
+
+[2013-05-21] [0.04.4] [!hh]
+- Wird eine neues Projekt angelegt, hat dies werden Start- noch Endedatum.
+- Eigenschaft IsCompleted with durch das ViewModel in ProjektListWindow als Status angezeigt.
+
+[2013-05-20] [0.04.4] [!hh]
+- BUGFIX CalenderKolonnenPresenter, setKolonnenFuehrerMenuItem.IsEnabled war in beiden if auf false.
+- Neuer Kolonnenführer kann jetzt über das Kontextmenü gesetzt werden.
+
+[2013-05-20] [0.04.3] [!mw]
+- [BACKUP 0.04.3]
+- [MERGE]
+- Datenbankupdates von 2-7 (Mitarbeitertabelle + Verknüpfungen)
+- BUGFIX Wenn Datenbankupdates durchgeführt wurden, wird die aktuelle Datenbankversion sofort in den Optionen angezeigt
+  und nicht erst nach Neustart
+- BUGFIX Nach Datenbankupdate 1 konnten keine weiteren Updates durchgeführt werden
+
+[2013-05-20] [0.04.2] [!hh]
+- Programmicon geändert.
+- WindowIconSetter.
+
+[2013-05-14] [0.04.2] [!mw]
+- [BACKUP 0.04.2]
+- Der Splashscreen wird mit TryCatch gesichert
+- Das Programm ist jetzt in 32-bit kompiliert
+- Projekte können in der Datenbank gespeichert/gelöscht werden
+
+[2013-04-25] [0.04.1] [!mw]
+- [BACKUP 0.04.1]
+- [MERGE]
+
+[2013-04-21] [0.04.1] [!hh]
+- MouseOver-Farbe für Checkbox und ComboBox geändert.
+- Wiederholende FehltageUserControl 
+- Änderungen MitarbeiterEditWindow und Presenter.
+
+[2013-04-21] [0.04.1] [!mw]
+- Projekte können in der Datenbank gespeichert, aktualisiert, gelöscht und eingelesen werden
+- Die Projekte haben eine neue Eigenschaft: Id, um ein Projekt eindeutig in der Datenbank zu identifizieren (Beschreibungen
+  können sich wiederholen). Diese Eigenschaft ist in der Db ein Autowert
+
+[2013-04-20] [0.04.1] [!mw]
+- Das "AssemblyDate" ist jetzt öffentlich durch die Klasse AppConfig
+- Im Optionenfester ist jetzt "Über" zu sehen mit Programm- und Datenbankversion
+- Der Defaultwert für Datum-Angaben ist nicht mehr eine Eigenschaft aus AppConfig sondern immer DateTime.MinValue
+- [DATABASE Version 1]: Projekttabelle wird erzeugt
+- Das Initialisieren und Laden der Einstellungen geschieht jetzt auch nach erfolgreicher Anmeldung. Somit geschieht nichts,
+  bevor nicht das Splashfenster zu sehen ist
+- [DATABASE Version 0]: MetaData Tabelle wird erzeugt, direkt nachdem die Datenbank erzeugt wurde
+- Datenbankupdates nach Anmeldung können jetzt durchgeführt werden.
+- Nach Anmeldung wird eine Datenbank erstellt, falls noch nicht vorhanden
+- Das Loginfenster ist jetzt ein Splashfenster. Hier werden nach der erfolgreichen Anmeldung noch einige Aktionen gestartet
+
+[2013-04-18] [0.04.1] [!mw]
+- Eine Datenbank wird jetzt beim Programmstart nach dem Login erzeugt (Montageplan.sdf)
+- Einige Datenbankklassen geschrieben
+- Über AppConfig kann man das Stammverzeichnis erhalten
+- Neuer Verweis: System.Data.SqlServerCe (Version 4.0)
+
+[2013-04-17] [0.04.0] [!mw]
+- [BACKUP 0.04.0]
+- Der Expander um Kolonnen zu vergrößern/verkleinern ist jetzt rechts. Etwas ungewohnt am Anfang, aber die Texte sind damit
+  besser formatiert und genauer untereinander
+- Es können jetzt 4 Mitarbeiter + 1 Kolonnenführer in einer Kolonne gleichzeitig zu sehen sein
+- Alle Kolonnen im Kalender haben einen Expander-Header
+- Kolonnenbezeichnung im Kalender ist nur noch per ToolTip über die Kolonnennummer zu sehen. Dafür sieht man jetzt die Projektbezeichnung
+- Sternensymbole sind links und sauber untereinander formatiert, damit keine Mitabreiter verschoben angezeigt werden
+- Neuere Sternsymbole für den Kolonnenführer und potentiellen Kolonnenführer (Kleiner)
+- Die Projektfarbe in der Kolonne am jeweiligen Tag wird jetzt im Header der Kolonne angezeigt und nicht mehr als
+  Hintergrundfarbe für die Projektbezeichnung
+- Die Mitarbeiter, die im Kalender unten zur Auswahl stehen, werden nach Namen sortiert
+- Die horizontale ScrollBar im Kalender wird jetzt nicht mehr angezeigt, wenn die Breite dynamisch berechnet wird
+- Man kann eine Kolonne zusammenklappen (ganze Zeile im Kalender)
+
+[2013-04-16] [0.03.1] [!mw]
+- Beim ersten Kalendertag ist neben den Kolonnen ein Expander um die Kolonnen zusammenzuklappen
+- Beim heutigen Tag ist der blaue Rahmen um den "Tagestext" weg
+- Die Kolonnen sind mit leichten Linien voneinander getrennt
+- Wenn ein Tag und eine Kolonne noch kein Projekt zugewisen wurde, dann wird der Kolonnenführer jetzt etwas anders dargestellt
+  und der Tag ist etwas dunkler als vorher
+- Wenn Objekte verändert werden wie Kolonnen, Projekte oder Mitarbeiter, werden diese Daten sofort auf dem Kalender aktualisiert
+- Alle Items haben eine feste Höhe von 20. (Die Items mit dem grauen Stern waren höher als die anderen)
+- Alle Kontextmenüeinträge haben eine schwarze Schrift und zudem sind die Kontextmenüeinträge weiter auseinander
+- [BACKUP 0.03.1]
+- [MERGE]
+
+[2013-04-15] [0.03.0] [!hh]
+- MainWindow, Menüpunkt Drucken->Bericht
+- NEU: TimespanSelectWindow.
+- StartDatumDruck und EndeDatumDruck neu in Settings, laden und speichern.
+- Drucken
+
+[2013-04-14] [0.03.0] [!hh]
+- Neuer ImageBrush mit grauem Stern.
+- MitarbeiterViewModel, neue Eigenschaft: KannFuehrerSeinVisibility.
+- CalendarMitarbeiterView, grauen Stern wenn Kolonnenführer sein kann.
+- Tooltip für grauen Stern "Kann Kolonnenführer sein"
+- Tooltip für gelben Stern "Ist Kolonnenführer"
+- Grauen Stern für potentielle Kolonnenführer in Mitarbeiterliste.
+- QuickInfoControlTemplate (Tooltip)
+
+[2013-04-14] [0.03.0] [!mw]
+- [BACKUP 0.03.0]
+- Kalendertage sind grau, wo kein Projekt zugewiesen wurde (Und weniger Text zu sehen)
+- Der Status der Mitarbeiter an einem Kalendertag aktualisiert sich jetzt richtig
+- Bei Mitarbeitern kann man nicht mehr Urlaubstage hinzufügen oder bearbeiten (Keinen Code vorhanden)
+- Funktionen könenn verwaltet werden
+- [MERGE]
+- [BACKUP 0.02.6]
+
+[2013-04-13] [0.02.5] [!hh]
+- Icons für Kollonnefenster, DatePickerWindow
+- Neue Brushes : CalenderImageBrush und StarImageBrush
+- Klick auf Datum in der NavBar öffnet DatePicker
+- Stern als Kollonenführer-Symbol
+- Kalender-Icon in Buttons Fenster-Projektdetails
+- Kalender-Icon in Buttons HolidayEditWindow-Projektdetails
+- Icon für EasyOptionsWindow
+- Menüitems ohne Funktion disabled.
+- Methode CanDropProjectOnDate gibt erstmal immer true zurück. (Doppeldrop Problem)
+- Mehr Beispielprojekte
+- Neuen Contextmenüeintrag "Als Kolonnenführer setzten"
+- Layout ContextMenütemplate.
+- alternativeKolonneBrush jetzt etwas heller.
+
+[2013-04-13] [0.02.5] [!mw]
+- Verwaltung von den Objekten (Mitarbeiter, Kolonnen und Projekte) verläuft jetzt fast reibungslos
+- [BACKUP 0.02.5]
+- [MERGE]
+- Das Fenster, um Projekt zu beabreiten ist fertig. Der Abbrechen-Button beim Projekte verwalten gilt nur für die Liste
+  und nicht für Veränderungen von vorher bearbeitetet Projekten
+- Die Klasse "RepositoryBase" hat jetzt eine Methode, um die Items mit einer übergebenen Auflistung anzupassen
+  (Neue items hinzufügen, nicht mehr vorhandene entfernen).
+
+[2013-04-13] [0.02.4] [!hh]
+- ContextMenuTemplate wird in App.xaml geladen.
+- Disabled-Farben angepasst.
+- MessageboxHelper angepasst.
+- Beim Drag&Drop von Projekten wir geprüft, ob der Zeitplan vom Projekt zum Tag passt.
+
+[2013-04-12] [0.02.4] [!mw]
+- [BACKUP 0.02.4]
+- Per Kontextmenu kann man Mitabreiter aus Kolonnen entfernen (nicht den Kolonnenführer)
+- Die Optionenauswahl "Allgemein" und "Über" rausgenommen, da konnte man noch nichts setzen
+- Breite der Projekte im Hauptfenster etwas erhöht
+- Die Schriftgröße der Kolonnenbezeichnung im Kalender ist genau so groß, wie alle anderen Überschriten (11pt)
+- Wenn man ein Mitarbeiter auf eine Kolonne gezogen wird, wird zu den bereits gesetzt Mitarbeitern auch überprüft, ob dieser Mitarbeiter
+  bereits als Kolonnenführer gesetzt wurde. In dem Fall darf der Mitarbeiter nicht als normaler Mitarbeiter gesetzt werden
+- ScrollBar etwas dunkler, damit sie auch in jeder 2ten Kolonne zu sehen sind (graue Hintergrundfarbe)
+- In den Kolonnen werden in den Mitarbeiter-Auswahllisten 4 Mitarbeiter gleichzeitig angezeigt (vorher 3)
+- Die Kalendertage werden jetzt abhängig von der Option in fester Breite gezeichnet oder an die Panelbreite angepasst (dynamisch).
+  Die dynamische Breite ist jetzt standard
+- Option "StaticWidth" umbenannt in "FixedWidth"
+- Eigenschaft von Mitarbeitern "FullName" entfernt. Binding gehen nur auf ViewModels, nicht auf Models. Dementsprechend MitarbeiterViewModels erzeugt
+- Der Rahmen bei der Farbauswahl, in dem Fenster um Projekte zu beabreiten, ist nicht mehr verschwommen (SnapToDevicePixels)
+- [MERGE]
+
+[2013-04-12] [0.02.3] [!hh]
+- Colorpicker jetzt ohne Transparenz-Slider
+- Defaultfarben im Colorpicker sortiert.
+- Defaultfarben jetzt mit SnapToDevicePixels
+- DragAdorner für Mitarbeiter jetzt mit Männchen.
+- Selected-Farbe bei Projekteauswahl jetzt außen vom Item und überschreibt nicht mehr die Projektefarbe (Farbmischer, der nicht gut aussah).
+- Abstände CalenderView
+- Mitarbeiter hat jetzt neben der Methode GetFullName auch die Eigenschaft FullName (für Bindings).
+- Zwei neue Farben, FuehrerFillBrush und FuehrerStrokeBrush für das Führersymbol der Mitarbeiter.
+- CalendarKolonneView, ItemTemplate für Mitarbeiter mit Männchen.
+
+[2013-04-11] [0.02.3] [!mw]
+- [BACKUP 0.02.3]
+- ListBoxItem-Style mit Key-Attribute versehen, damit man leichter den Style erben und anpassen kann
+- Höhe der Kolonnen-Items am Kalendertag erhöht (Mehr Mitarbeiter auf einem Blick sehen können)
+- Man kann jetzt per Drag&Drop Mitabreiter auf dem jeweiligen Kalendertag ziehen, der Mitarbeiter verändert dadurch seine "Tagesfarbe"
+- Die Farbe des jeweiligen Projektes wird im Kalendertag gezeichnet
+- Man kann jetzt per Drag&Drop den Kolonnen am jeweiligen Kalendertag ein Projekt zuweisen, die Textfarben werden dann von Grau zu Schwarz
+- Die Kolonnen haben kein Startprojekt mehr (War nur für Testzwecke)
+- Veränderungen an den Drag&Drop-Klassen
+- Basisklasse für ViewModels, um die Neuzeichnung und Neubindung zu erzwingen (PropertyChanged)
+- Drag&Drop der Projekte aus einer Kolonne im Kalender funktioniert jetzt fehlerfrei
+- [MERGE]
+- [BACKUP 0.02.2]
+
+[2013-04-11] [0.02.2] [!hh]
+- NEU DisplayOptionPanel für DarstellungsOptionen.
+- UserSetting mit DaysAlignment und KalenderTageAusrichtung.
+- KalenderTageAusrichtung wird In Config geladen und gespeichert.
+- Style RadioButtonControlTemplate.
+- ColorPicker jetzt mit vordefinierten Farben.
+- genericBlueBrush in ApplicationColorTheme für besondere blauen Markierungen.
+- CalendarDayPresenter & View, ist der Tag der heutige Tag wird er in der Ansicht blau markiert.
+- Kolonne hat eine neue Eigenschaft IstPlatzhalter. Ist die Kolonne ein Platzhalter werden vom CalenderKolonnenPresenter die Texte grau angezeigt.
+
+[2013-04-10] [0.02.2] [!mw]
+- Wenn ein Drag&Drop Vorgang abgeschlossen ist, wird der Adorner entfernt (egal ob der Vorgang erfolgreich war).
+- Im ProjektViewModel wurden die Datumsformatierungen ersetzt mit der PropertyFormatter-Klasse (FormatDate)
+- [MERGE]
+- [BACKUP 0.02.1]
+
+[2013-04-08] [0.02.1] [!mw]
+- Beim Mitarbeiter-Editfenster ist die Funtion-Auswahlbox ist ein Pflichtfeld
+- Beim Kolonnen-Editfenster kann man jetzt ein weiteren Mitarbeiter auswählen und die Kolonnenführer-Auswahlbox ist ein Pflichtfeld
+- ComboBox-Template verändert, damit man die Rahmenfarbe zur Laufzeit ändern kann (hier rot bei Falscheingaben)
+- Aus dem TextBoxInputValidator wurde ein ControlInputValidator (Kann jetzt TextBox oder ComboBox sein)
+- Beim Projekte-Editfenster sind beide Datumangaben nicht mehr Pflichtfelder. Nur ein Datum angeben reicht nicht aus und das
+  Startdatum muss kleiner als das Endedatum sein
+- Der TextBoxInputValidator kann jetzt beim Validieren von einem Datum einen leeren Text erlauben
+
+[2013-04-08] [0.02.0] [!hh]
+- Events für Listen-Fenster Contextmenüs
+- Style und Farben Contextmenü
+- Neu ContextMenuControlTemplate
+- Neu FunktionEditWindow und FunktionEditPresenter
+- Neu FunktionenGridView
+- Neu FunktionListWindow und FunktionListPresenter
+- MainMenü hat jetzt Eintrag um Funktionen zu verwalten.
+- Neu HolidayEditPresenter
+- Neue Eigenschaft MitarbeiterHoliday: Bezeichnung
+- Neu HolidayEditWindow für Start und Endtage des Urlaubs
+- Neu HolidayGridView, für die Urlaubs und Krankentage der Mitarbeiter
+- Holiday in Mitarbeiter ist jetzt Holidays und eine Liste.
+
+[2013-04-07] [0.02.0] [!hh]
+- Mänchen-Symbol im CalenderMitarbeiterView
+- ColorPickerWindow kann die Projektfarbe ändern.
+- Neu ColorPickerWindow
+- Neu SliderControlTemplate
+- ProjektEditWindow und ProjektEditPresenter verwalten jetzt auch die Projektfarbe.
+- Farben der Projekte werden im ProjektGridView angezeigt.
+- Neue Eigenschaften Zeitspanne und ProjectColorBrush für Projekt, ProjektViewModel und ProjektItemTemplate
+- Mehre Demo-Items in ObjectFactory
+- Layout projektAdornerTemplate, entspricht jetzt in Farbe und Aufbau ProjektItemTemplate.
+- Layout ProjektItemTemplate
+- Layout DateNavigationBar
+
+[2013-04-07] [0.02.0] [!mw]
+- Die Scrollbars sind ca. 30 % schmaler
+- Es werden weniger Mitarbeiter (2) in den Kalendertagen auf einem Blick angezeigt
+- [BACKUP 0.02.0]
+- Die Mitarbeiter haben jetzt ein Objekt, indem der Urlaub gespeichert werden kann
+- Schriftgröße des Datums in den jeweiligen Kalendertagen vergrößert und den anderen Überschriften angepasst (11pt)
+- Menüeintrage "Projekte ausblenden" und "Projekte einblenden" sind auskommentiert
+
+[2013-04-06] [0.01.6] [!mw]
+- Bei dem Kolonnenbearbeitungsfenster kann jetzt nur noch ein Mitarbeiter, der potentieller Führer ist, als Kolonnenführer ausgewählt werden
+- Zu jeder Kolonne am jeweiligen Tag wird der Kolonnenführer angezeigt
+- Um die vielen Grautöne etwas aufzulzockern, sind die ausgewählten Items, der ausgewählte Auswahlkalendereintrag (DatePickerWindow)
+  und die Wochenübersichtsanzeige (oben im Kalender) blau
+- Die Projekte links im Hauptfenster werden in einem Expander dargestellt. Wenn dieser verkleinert wird,
+  dockt sich der Projekte text vertikal links an
+- ZoomControl wurde dem Kalender hinzugefügt. Mit der linken Steuerungstaste und dem Mausrad kann man den Zoom des Kalenders verändern
+- Die Klasse "MontageCalendar" verwltet die sichtbaren Tage des Kalenders. Die "Model-Informationen" wurden aus allen Presentern entfernt
+- Die angezeigte Woche (von-bis) wird im Kalender ganz oben zur Übersicht angezeigt
+
+[2013-04-05] [0.01.6] [!mw]
+- Das Datum im Namen der Logdatei wird anders formatiert: von "yyyy-MM.dd" auf "yyyy-MM-dd"
+- Kolonnen innerhalb eines Tages können vertikal gescrollt werden
+- Design des Kalenders verändert (Übersichtlicher und Farben angepasst)
+- Konzept entwickelt und implementiert, wie die einzelnen Kalendertage im Code verwaltet werden
+- ScrollViewer Template geschrieben um das Design anzupassen
+
+[2013-04-04] [0.01.6] [!mw]
+- Zu einer Tag-Mitarbeiter-Verknüpfung kann ein Status zugeordnet werden:
+  Beschäftigt, Ausgelastet, Noch nicht beschäftigt, Krank, Schule, Urlaub
+- Dummy-Kolonnen werden in der DayView gezeichnet
+- Drag&Drop Template für die Mitarbeiter unten in der jeweiligen DayView
+- Kolonnen können in einer Übersicht angezeigt und bearbeitet werden
+
+[2013-04-03] [0.01.6] [!mw]
+- Mitarbeiter werden in der DayView zur Auswahl angezeigt
+
+[2013-04-02] [0.01.6] [!mw]
+- Drag-AdornerTemplate für Projekte, die auf einen Tag gezogen werden
+
+[2013-04-01] [0.01.6] [!mw]
+- Um den Aufruf vom MainWindow ist ein Try-Catch + Logging und Ausgabe einer Fehlermeldung
+- (FIX) Der ErrorLogger hatte einen StackTraceFrames Wert von 5000 (Test). Jetzt ist er wieder bei 7.
+- Im Fenster um Mitarbeiter zu bearbeiten, können Funktionen ausgewählt und zugewiesen werden
+- Die Kalendertage haben einen MouseOver-Effekt
+- [MERGE]
+
+[2013-03-31] [0.01.5] [!hh]
+- [BACKUP 0.01.5]
+- Neue Klasse CalenderViewPresenter.
+- Neue Klasse DateNavigationBarPresenter.
+- Mit der NavigationBar kann man jetzt im Calender navigieren.
+- Neue Klasse CalenderWeek, Verwaltet die Daten einer Kalenderwoche.
+- Neue Methoden in DateHelper zur Berechnung von Kalenderwochen und zurück in DateTime.
+- Neue Klasse CalenderDayViewModel, enthält Daten die für den Tag angezeigt werden soll.
+- Neue Klasse CalenderDayView, Anzeige für einen Tag im Kalender.
+
+[2013-03-31] [0.01.4] [!mw]
+- Die Übernehmen-Button beim Anlegen/Bearbeiten von Projekten und Mitarbeitern sind jetzt default-Buttons
+- Kontextmenü um Mitarbeiter verwalten zu können
+- Man kann jetzt neue Mitarbeiter anlegen (noch ohne Funktion)
+- [BACKUP 0.01.4]
+- Mitarbeiter können in dem Mitarbeiterfenster angezeigt werden. Bearbeitungen sind noch nicht möglich.
+- Projekte können bei der Projektverwaltung hinzugefügt, bearbeitet und gelöscht werden (per Kontextmenü)
+- Klasse implementiert, um Referenzen auf Views zu erhalten, die man normalerweise nicht direkt von der xaml holen kann (SubElementGetter)
+- Der Abbrechen-Button beim Projekte verwalten ist vorerst nicht verfügbar (noch keinen Code fürs Abbrechen)
+- Eine Klasse implementiert, die TextBox-Eingaben verwaltet. Wenn Werte falsch sind, färbt sich der Rahmen rot
+  und eine Meldung benachrichtigt, über die Falscheingabe (TextBoxInputValidator)
+- TextBoxControlTemplate verändert, damit man im Code den BorderBrush dynamisch verändern kann
+- Die Klasse ProjektEditPresenter strukturiert
+- [BACKUP 0.01.3]
+- [MERGE]
+
+[2013-03-30] [0.01.3] [!hh]
+- Neues Control: CalenderView, in MainWindow eingebettet
+- Neues Control: DateNavigationBar, im CalenderView eingebettet
+- Neue Klasse: DateHelper für Berechnungen mit der Zeit.
+- Neues Fenster DatePickerWindow
+- ProjektEditPresenter arbeitet jetzt mit dem neuen DatePickerWindow
+
+[2013-03-30] [0.01.2] [!mw]
+- [BACKUP 0.01.2]
+
+[2013-03-29] [0.01.2] [!mw]
+- Speichern und Laden der configs.xml vorbereitet
+- Keys von Brushes in der ApplicationColorTheme.xaml strukturiert
+- Max Mustermann als Standard Test-Login. Wenn diese Daten verändert werden ist vorrübergehend kein Login möglich
+- GridView für Projekte verwalten
+- Fenster implementiert um ein Projekt neu anzulegen bzw. zu bearbeiten (Neu-Button im Projekte-Verwalten-Fenster)
+- Fenster implementiert um Projekte zu verwalten (Menü->Verwaltung->Projekte)
+- Fehlerhafter Login wird geloggt
+- Login-Fenster wird zuerst angezeigt
+- Provisorisches Logo in der exe und im Hauptfenster eingefügt (ico mit 256, 48, 32, 24, 16)
+- Der Titel des Hauptfensters enthält das Kompilierdatum der exe und die aktuelle Versionsnummer
+- [BACKUP 0.01.1]
+- [MERGE]
+
+[2013-03-28] [0.01.0] [!mw]
+- ApplicationConfig geschrieben, mit Version und RootDirectory als Information
+- ErrorLogging-Klasse geschrieben
+- Provisorische Images für die Projekte als Resource eingefügt
+- ItemTemplates für die Projekte-Auswahl links im Hauptfenster + Presenter implementiert
+- Projektstruktur verändert

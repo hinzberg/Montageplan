@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="..\ControlTemplates\ApplicationColorTheme.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <DataTemplate x:Key="projektAdornerTemplate">
+        <Grid Height="50" Background="{Binding ProjectColorBrush}">
+            <DockPanel VerticalAlignment="Center"  Margin="10,0,10,0">
+                <TextBlock Text="{Binding Bezeichnung}"  FontWeight="Bold" DockPanel.Dock="Top"
+                           TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" />
+                <TextBlock DockPanel.Dock="Top" Text="{Binding DateSpan}"/>
+                <TextBlock DockPanel.Dock="Top" Text="{Binding TimeSpan}"/>
+            </DockPanel>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="mitarbeiterAdornerTemplate">
+        <Border Height="25"  Background="{StaticResource lviBackgroundSelectedBrush}">
+            <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                <!--Männchen-->
+                <StackPanel Height="16" Width="12"  VerticalAlignment="Center" DockPanel.Dock="Right" Margin="0,0,5,0">
+                    <Path StrokeThickness="0" Fill="{Binding StatusColor}" SnapsToDevicePixels="True">
+                        <Path.Data>
+                            <CombinedGeometry GeometryCombineMode="Union">
+                                <CombinedGeometry.Geometry1>
+                                    <EllipseGeometry Center="6,5" RadiusX="4" RadiusY="4" />
+                                </CombinedGeometry.Geometry1>
+                                <CombinedGeometry.Geometry2>
+                                    <EllipseGeometry Center="6,14" RadiusX="6" RadiusY="6.5" />
+                                </CombinedGeometry.Geometry2>
+                            </CombinedGeometry>
+                        </Path.Data>
+                    </Path>
+                </StackPanel>
+                <!--Mitarbeitername-->
+                <TextBlock Text="{Binding Mitarbeiter.FullName}" Margin="6,0,0,0" 
+                           TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>

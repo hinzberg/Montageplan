@@ -1,0 +1,90 @@
+﻿<Window x:Class="Montageplan.Windows.KolonneEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:custom="clr-namespace:PolePosition.CustomToolbar"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="..\..\Resources\montysymbol.png"
+        FontFamily="Arial" FontSize="10pt"
+        Background="{StaticResource windowBackgroundBrush}"
+        Title="Kolonne bearbeiten" 
+        Height="442" Width="451">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\ItemTemplates\MitarbeiterGridView.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <!--Content-->
+        <StackPanel Orientation="Vertical" Margin="5,5,5,0">
+            <Label>Nummer</Label>
+            <TextBox Name="txtNummer"/>
+            <Label>Bezeichnung</Label>
+
+            <DockPanel>
+                <Border Name="colorDisplay" DockPanel.Dock="Right" Width="23" Height="23" 
+                        ToolTip="Farbe auswählen"
+                        BorderThickness="1"  HorizontalAlignment="Left" Margin="5,0,0,0"
+                    BorderBrush="{StaticResource genericControlBorderBrush}" SnapsToDevicePixels="True">
+                    <Rectangle Height="15" Width="15" Fill="{StaticResource ColorsImageBrush}"/>
+                </Border>
+                <TextBox Name="txtBezeichnung"/>
+            </DockPanel>
+            
+            <Label>Kolonnenführer</Label>
+            <ComboBox Name="comboKolonnenFuehrer">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FullName}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <CheckBox Margin="0,8,0,2" Name="checkAktiv">Aktiv</CheckBox>
+
+
+        </StackPanel>
+
+        <Grid Grid.Row="1" Background="{StaticResource windowBackgroundAlternativBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <Label Margin="0,5,0,0" >Weitere Mitarbeiter</Label>
+                <custom:ToolBar Grid.Row="0" Margin="0"  x:Name="mainToolbar" Height="35" />
+            </StackPanel>
+
+            <ListView Grid.Row="1" Margin="0,0,0,0" Name="mitarbeiterListView" View="{StaticResource mitarbeiterSimpleGridView}" SelectionMode="Single"
+                       BorderThickness="0">
+            </ListView>
+
+        </Grid>
+        
+
+
+
+
+
+        <!--Die Schaltflächen-->
+        <DockPanel Grid.Row="2" Background="{StaticResource windowBackgroundAlternativBrush}">
+            <Button Height="23" Margin="0,0,5,0" Name="btnCancel" Width="90" DockPanel.Dock="Right">
+                <TextBlock Margin="0,1,0,0" Text="Abbrechen" />
+            </Button>
+            <Button Height="23" Margin="0,0,5,0" Name="btnSubmit" Width="90"   DockPanel.Dock="Right">
+                <TextBlock Margin="0,1,0,0" Text="Übernehmen" />
+            </Button>
+            <StackPanel></StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

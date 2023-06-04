@@ -1,0 +1,62 @@
+﻿
+
+projekte entfernen
+
+
+
+Eigenschaft KolonneColorBrush in Kolonne muss noch gespeichert werden.
+Eigenschaft Bezeichnung in Mitarbeiter muss noch gespeichert werden.
+
+BEKANNTE PROBLEME
+
+- ISSUE 01: Bekanntes Problem, wenn ein Projekt gelöscht wird bleibt das Engagment.
+- Wird ein Termin entfernt, aktualisiert sich die Projektliste nicht zuverlässig.
+
+TODO WICHTIG!
+////////////////////////////////////////////////////////////////////////////////////////////
+* 2013-07-01 Man kann einem Mitabreiter zu unterschiedlichen Kolonnen als Führer setzen
+* Beim Droppen eines Projekts die Daten beachten (Start- und Endedatum)
+* xp datenbank erstellen
+* DragDrop-Fehler bei der ScrollBar in der Mitarbeiter-Auswahlliste
+
+TODO
+////////////////////////////////////////////////////////////////////////////////////////////
+* Tabelle EngagementsMirtarbeiter - Spalte EngagementsId umbenennen "s" wegmachen
+* aktiv bei objekten edit fenster ?
+* klick auf projektevorlage -> hervorheben
+* wechsel vom kolonnenführer
+* mitarbeiter urlaub/krank
+  Mitarbeiter braucht eine Eigenschaft (int) für Wiederkehrende Fehltage (Berufschule). Im MitarbeiterEditPresnter gibt es für den View von Dummy-Code.
+* wenn kolonne verändert, dann neuer db eintrag (muss aber mind. einen termin haben) ? (vllt. doch referenz)
+  wenn kolonne verändert wird, dann sollen sich termine in zukunft schon auf die neue kolonne beziehen ? messagebox ?
+* Projekt löschen ?
+* Kolonne löschen ?
+* Kolonnen anordnen können (Position), Index im Kalender
+* Wenn man ein Mitarbeiter auf ein Projekt zieht und später diesen einer anderen Kolonne als fester Mitarbeiter hinzufügt, kann ein
+  Mitarbeiter an einem Tag zu mehreren Kolonnen gehören - Das sollte man vermeiden. 
+* Wenn Objekte entfernt werden, dürfen sie nicht wirklich weg - Historie
+
+
+Email Holger:
+
+Erweiterungen Montageplan
+
+	• Die Installation ist schwierig (Was wir da machen weiss ich auch nicht)
+	• Beim Start kommt ein "Will Änderungen vornehmen" Fenster von Windows. Vermutlich durch unsere Administrator requirierd.
+	• Das Grau der Kolonnen/Projekte Platzhalter ein wenig heller machen.
+	•ok Im CalenderKolonneView den Projektnamen groß und fett anzeigen wie den Kolonnenamen.
+	•ok Alle Projekte die noch nicht zugeteilt wurden sollen in der Seitenleiste rot markiert werden.
+	• Ein Projekt das heute, (oder vor heute) beginnt aber noch nicht zugeteilt ist soll rot blinken.
+	•ok Projekte mit einer Laufzeit dürfen nicht ausserhalb der Start-End-Zeit auf den Kalender gezogen werden. (Die Validierung dafür ist auskommentiert)
+	• Wird ein Projekt mit einer Laufzeit auf den Kalender gezogen sollen alle anderen Tage bis zum Laufzeitende automatisch auch für die Kolonne gefüllt werden.
+	• Wird ein zusätzlicher Mitarbeiter auf einen Termin gezogen soll bei einem mehrtägigen Projekt automatisch auch die verbleibenden Tage mit dem Mitarbeiter gefüllt werden. Achtung! Ziehe ich den Mitarbeiter auf den Projektstarttag wird der Mitarbeiter bis zum Endetag zugeteilt. Ziehe ich einen Mitarbeiter auf einen anderen Tag wird der Mitarbeiter von da an bis zum Endtag zugeteilt. Also immer vom Reinzieht bis zum Projektendtag.
+	• Im KoloneEditWindow kann einer Kolonne neben dem Führer nicht nur ein weiterer Mitarbeiter zugefügt werden, sondern einen ganze Liste. Es gibt Kolonnen (Teams) die immer zusammen arbeiten.
+	•ok Die Mitarbeiterliste (CalendarMitarbeiterView) soll auch ausblendbar sein.
+
+
+IDEEN
+////////////////////////////////////////////////////////////////////////////////////////////
+* Basisklasse für die ListPresenter, vllt. auch für EditPresenter (sehr viele Funktionen sind gleich - Generic nutzen)
+* Ereignisse loggen wie: Kolonne angelegt, Mitarbeiter entfernt Login + Zeit... Alles Mögliche loggen, um später Fehler besser nachempfinden zu können ?
+
+

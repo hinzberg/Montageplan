@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Montageplan.Print.Pages.DemoPageFlowTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="demoPageFlowTemplate"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             Height="648" Width="1024">
+    <Grid>
+        <TextBlock FontSize="40" Text="{Binding Description, ElementName=demoPageFlowTemplate}"/>
+    </Grid>
+</UserControl>

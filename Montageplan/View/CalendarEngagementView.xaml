@@ -1,0 +1,157 @@
+﻿<UserControl x:Class="Montageplan.View.CalendarEngagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent"
+             Name="local"
+             BorderBrush="White" BorderThickness="0,0,0,2">
+
+    <UserControl.Resources>
+        <Style TargetType="ListBoxItem" BasedOn="{StaticResource lbiBaseStyleWithoutSelected}">
+            <Setter Property="Foreground" Value="{Binding Foreground, ElementName=local}" />
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Name="addProjektControlMenuItem">
+                <MenuItem.Header>
+                    <TextBlock Text="Neues Projekt anlegen..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Name="removeEngagementControlMenuItem">
+                <MenuItem.Header>
+                    <TextBlock Text="Alle Projekte entfernen" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                </MenuItem.Header>
+            </MenuItem>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+
+
+    <StackPanel Margin="0,0,0,0" >
+        <Grid Name="kolonneColorHeaderGrid">
+            <DockPanel Margin="3,3,3,3" Height="38" LastChildFill="False">
+                <StackPanel Margin="0,0,0,0">
+                    <TextBlock Name="kolonneNummerTextBlock" FontWeight="Bold" FontSize="10pt" VerticalAlignment="Center" />
+                    <TextBlock Name="kolonneBezeichnungTextBlock" FontWeight="Bold" FontSize="10pt" Margin="0,3,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+                <Expander Name="headerExpander" Height="23" Width="23" Margin="0,0,0,0" IsExpanded="True" Visibility="Collapsed" DockPanel.Dock="Right" VerticalAlignment="Top" />
+                <TextBlock Name="projekteCountTextBlock" Text="0" DockPanel.Dock="Right" VerticalAlignment="Top" FontSize="10pt" FontWeight="Bold" />
+            </DockPanel>
+            <Border Name="emptyInfoBorder" Background="{x:Null}" BorderThickness="0" />
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="135" />
+                <!--95-->
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Top" Margin="0,2,0,0">
+                <TextBlock Name="mitarbeiterNameTextBlock" Text="Mitarbeiter:" VerticalAlignment="Center" Margin="3,0,0,0" />
+                <ListBox Name="mitarbeiterListBox" BorderThickness="0" Background="Transparent" Margin="-1,-2,0,0" Height="135">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel LastChildFill="True">
+
+                                <Rectangle Name="fuehrerRectangle" Height="16" Width="16" Margin="1,0,2,0" VerticalAlignment="Center"
+                                           ToolTip="Ist Kolonnenführer" Fill="{StaticResource StarImageBrush}" />
+
+                                <TextBlock Margin="0,0,0,0" VerticalAlignment="Center" ToolTip="{Binding Funktion}"
+                                       Text="{Binding Mitarbeiter.FullName}" TextTrimming="CharacterEllipsis" />
+
+                            </DockPanel>
+
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IstFuehrer}" Value="False">
+                                    <Setter TargetName="fuehrerRectangle" Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Name="removeMitarbeiterMenuItem">
+                                <MenuItem.Header>
+                                    <TextBlock Text="Mitarbeiter entfernen" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem Name="setKolonnenFuehrerMenuItem">
+                                <MenuItem.Header>
+                                    <TextBlock Text="Mitarbeiter als Kolonnenführer setzten" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Name="addProjektMitarbeiterMenuItem">
+                                <MenuItem.Header>
+                                    <TextBlock Text="Neues Projekt anlegen..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem Name="removeAllProjekteOnMitarbeiterMenuItem">
+                                <MenuItem.Header>
+                                    <TextBlock Text="Alle Projekte entfernen" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
+            </StackPanel>
+
+            <Grid Grid.Row="1" VerticalAlignment="Top">
+                <ListBox Name="projekteListBox" MaxHeight="310" Margin="0,5,0,5" BorderThickness="0" Background="Transparent">
+                    <ListBox.ContextMenu>
+                        <ContextMenu Name="projekteContextMenu">
+                            <MenuItem Name="addProjektProjekteMenuItem">
+                                <MenuItem.Header>
+                                    <TextBlock Text="Neues Projekt anlegen..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Name="removeProjektMenuItem">
+                                <MenuItem.Header>
+                                    <TextBlock Text="Projekt entfernen" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem Name="removeAllProjekteMenuItem">
+                                <MenuItem.Header>
+                                    <TextBlock Text="Alle Projekte entfernen" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource lbiBaseStyleWithoutSelected}">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="Margin" Value="0" />
+                            <Setter Property="Height" Value="38" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Height="36" BorderThickness="1" CornerRadius="0" BorderBrush="{Binding ProjektBorderColor}" Background="{Binding ProjektColor}" Margin="0,0,2,0">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0"/>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="0" Height="1" Background="White"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding TimeInfo}" ToolTip="{Binding TimeInfo}" Margin="5,3,0,0"
+                                           HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Row="2" Text="{Binding ProjektName}" ToolTip="{Binding ProjektName}"   Margin="5,0,0,3"
+                                           HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Grid Name="noProjektGrid" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                        <TextBlock Margin="0,10,0,0"  TextAlignment="Center" TextWrapping="Wrap" Text="Projekte hier ablegen oder durch Doppelklick hinzufügen" />
+                </Grid>
+                
+            </Grid>
+        </Grid>
+    </StackPanel>
+</UserControl>

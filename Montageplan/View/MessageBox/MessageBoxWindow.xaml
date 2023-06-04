@@ -1,0 +1,104 @@
+﻿<Window x:Class="Montageplan.View.MessageBox.MessageBoxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontFamily="Arial" FontSize="10pt"
+         Icon="..\..\Resources\montysymbol.png"
+        Background="{StaticResource windowBackgroundBrush}"
+        Title="Mitteilung" Height="180" Width="480"
+        Loaded="WindowLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Canvas Width="55.214" Height="60.202" Name="iconWarning" Visibility="Collapsed">
+            <Canvas>
+                <Path StrokeThickness="2.0" Stroke="#ffacacac" StrokeMiterLimit="1.0" Data="F1 M 31.441,1.062 L 30.352,1.498 L 15.231,27.667 L 0.984,52.602 L 0.984,53.690 L 1.783,54.272 L 31.551,54.200 L 61.063,54.272 L 62.240,53.690 L 62.240,52.492 L 47.652,27.667 L 32.678,1.571 L 31.441,1.062 Z"/>
+                <Path Fill="#fffff7f7" Data="F1 M 31.362,1.710 L 30.292,2.146 L 15.488,27.529 L 1.484,52.450 L 1.484,53.541 L 2.270,54.122 L 31.530,54.049 L 60.539,54.122 L 61.694,53.541 L 61.694,52.342 L 47.355,27.529 L 32.577,2.218 L 31.362,1.710 Z"/>
+                <Path Fill="#fff0e52d" Data="F1 M 31.457,2.939 L 30.428,3.351 L 16.158,28.052 L 2.708,51.586 L 2.708,52.617 L 3.463,53.164 L 31.559,53.096 L 59.417,53.164 L 60.527,52.617 L 60.527,51.484 L 46.758,28.052 L 32.623,3.420 L 31.457,2.939 Z"/>
+                <Path Fill="#ffdfb416" Data="F1 M 21.096,32.718 C 6.962,39.580 2.571,51.997 2.571,51.997 L 2.571,53.027 L 3.325,53.576 L 31.422,53.508 L 59.280,53.576 L 60.390,53.027 L 60.390,51.895 L 46.622,28.464 C 46.622,28.464 32.979,26.949 21.096,32.718 Z"/>
+                <TextBlock Foreground="#ff000000" Canvas.Left="25.057" Canvas.Top="5.284" FontSize="45" FontFamily="Arial">!</TextBlock>
+            </Canvas>
+        </Canvas>
+
+        <Canvas  Width="55.214" Height="60.202" Name="iconQuestion" Visibility="Collapsed">
+            <Path StrokeThickness="2.0" Stroke="#ffacacac" StrokeMiterLimit="1.0" Data="F1 M 54.230,27.771 C 54.230,42.566 41.905,54.040 27.348,54.040 C 12.787,54.040 0.984,42.566 0.984,27.771 C 0.984,12.978 12.787,0.984 27.348,0.984 C 41.905,0.984 54.230,12.978 54.230,27.771 Z"/>
+            <Path StrokeThickness="1.0" Stroke="#ffffffff" StrokeMiterLimit="1.0" Data="F1 M 53.316,27.605 C 53.316,41.827 41.787,53.355 27.566,53.355 C 13.345,53.355 1.816,41.827 1.816,27.605 C 1.816,13.384 13.345,1.855 27.566,1.855 C 41.787,1.855 53.316,13.384 53.316,27.605 Z"/>
+            <Path Fill="#ff2960b9" Data="F1 M 52.191,27.613 C 52.191,41.224 41.157,52.259 27.546,52.259 C 13.934,52.259 2.900,41.224 2.900,27.613 C 2.900,14.001 13.934,2.968 27.546,2.968 C 41.157,2.968 52.191,14.001 52.191,27.613 Z"/>
+            <Path Fill="#ff1445a3" Data="F1 M 4.691,36.605 C 4.691,36.605 16.691,26.230 25.191,23.230 C 34.628,19.900 51.316,20.855 51.316,20.855 C 51.316,20.855 54.249,31.760 49.566,38.980 C 45.220,45.682 40.229,49.648 36.191,50.980 C 32.215,52.292 23.882,53.814 16.566,50.022 C 6.358,44.730 4.691,36.605 4.691,36.605 Z"/>
+            <Path Fill="#ffffffff" Data="F1 M 28.458,12.761 C 23.463,12.355 23.213,18.417 22.567,19.595 C 21.873,20.860 21.416,21.954 19.567,21.761 C 18.429,21.643 17.283,20.215 17.135,18.902 C 16.687,14.933 19.309,11.284 20.963,9.699 C 23.438,7.327 26.129,6.964 28.983,7.011 C 31.174,7.047 33.664,7.876 35.432,9.605 C 37.570,11.696 38.786,14.639 38.783,17.928 C 38.779,22.860 35.819,25.352 35.121,26.387 C 34.067,27.950 31.713,29.511 30.557,32.386 C 30.165,33.359 30.134,35.641 29.557,36.517 C 28.900,37.512 27.945,37.814 27.307,37.751 C 26.567,37.679 25.588,37.241 25.025,35.845 C 24.563,34.698 24.746,32.039 25.067,30.845 C 25.868,27.870 26.885,27.251 28.244,25.308 C 29.082,24.111 31.317,22.126 32.010,20.839 C 32.801,19.367 32.903,18.719 32.760,17.058 C 32.702,16.387 32.237,15.047 31.791,14.542 C 30.592,13.185 30.475,12.926 28.458,12.761 Z"/>
+            <Path Fill="#ffffffff" Data="F1 M 31.067,44.678 C 31.067,46.565 29.537,48.095 27.650,48.095 C 25.763,48.095 24.233,46.565 24.233,44.678 C 24.233,42.792 25.763,41.261 27.650,41.261 C 29.537,41.261 31.067,42.792 31.067,44.678 Z"/>
+        </Canvas>
+
+        <Canvas Width="55.214" Height="55.023" Name="iconError" Visibility="Collapsed">
+            <Path StrokeThickness="2.0" Stroke="#ffacacac" StrokeMiterLimit="1.0" Data="F1 M 54.230,27.771 C 54.230,42.565 41.906,54.040 27.348,54.040 C 12.787,54.040 0.984,42.565 0.984,27.771 C 0.984,12.978 12.787,0.984 27.348,0.984 C 41.906,0.984 54.230,12.978 54.230,27.771 Z"/>
+            <Path StrokeThickness="1.0" Stroke="#ffffffff" StrokeMiterLimit="1.0" Data="F1 M 53.316,27.605 C 53.316,41.827 41.787,53.356 27.566,53.356 C 13.345,53.356 1.816,41.827 1.816,27.605 C 1.816,13.384 13.345,1.855 27.566,1.855 C 41.787,1.855 53.316,13.384 53.316,27.605 Z"/>
+            <Path Fill="#ffcd0000" Data="F1 M 52.191,27.613 C 52.191,41.225 41.158,52.258 27.546,52.258 C 13.934,52.258 2.900,41.225 2.900,27.613 C 2.900,14.002 13.934,2.968 27.546,2.968 C 41.158,2.968 52.191,14.002 52.191,27.613 Z"/>
+            <Path Fill="#ff9f0000" Data="F1 M 4.691,36.606 C 4.691,36.606 16.691,26.230 25.191,23.230 C 34.628,19.900 51.316,20.855 51.316,20.855 C 51.316,20.855 54.250,31.760 49.566,38.981 C 45.220,45.682 40.228,49.649 36.191,50.981 C 32.214,52.292 23.882,53.815 16.566,50.022 C 6.358,44.731 4.691,36.606 4.691,36.606 Z"/>
+            <Path Data="F1 M 37.445,43.647 L 11.778,18.106 L 17.127,12.730 L 42.792,38.272 L 37.445,43.647 Z">
+                <Path.Fill>
+                    <LinearGradientBrush MappingMode="Absolute" StartPoint="78.930,93.820" EndPoint="110.180,93.820">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.00" Color="#ffffffff"/>
+                            <GradientStop Offset="1.00" Color="#ff989898"/>
+                        </LinearGradientBrush.GradientStops>
+                        <LinearGradientBrush.Transform>
+                            <MatrixTransform Matrix="0.821,0.817,0.705,-0.709,-116.553,17.412" />
+                        </LinearGradientBrush.Transform>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+            <Path Data="F1 M 11.778,38.229 L 37.488,12.730 L 42.828,18.115 L 17.118,43.612 L 11.778,38.229 Z">
+                <Path.Fill>
+                    <LinearGradientBrush MappingMode="Absolute" StartPoint="73.892,143.430" EndPoint="105.143,143.430">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.00" Color="#ffffffff"/>
+                            <GradientStop Offset="1.00" Color="#ff989898"/>
+                        </LinearGradientBrush.GradientStops>
+                        <LinearGradientBrush.Transform>
+                            <MatrixTransform Matrix="-0.823,0.816,0.704,0.710,-0.048,-146.707" />
+                        </LinearGradientBrush.Transform>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+        </Canvas>
+
+        <Canvas Width="55.214" Height="60.877" Name="iconInfo" Visibility="Collapsed">
+            <Path StrokeThickness="2.0" Stroke="#ffacacac" StrokeMiterLimit="1.0" Data="F1 M 54.231,27.913 C 54.231,42.707 41.905,54.180 27.348,54.180 C 12.787,54.180 0.984,42.707 0.984,27.913 C 0.984,13.119 12.787,1.125 27.348,1.125 C 41.905,1.125 54.231,13.119 54.231,27.913 Z"/>
+            <Path StrokeThickness="1.0" Stroke="#ffffffff" StrokeMiterLimit="1.0" Data="F1 M 53.317,27.747 C 53.317,41.967 41.788,53.497 27.566,53.497 C 13.345,53.497 1.816,41.967 1.816,27.747 C 1.816,13.525 13.345,1.997 27.566,1.997 C 41.788,1.997 53.317,13.525 53.317,27.747 Z"/>
+            <Path Fill="#ff2960b9" Data="F1 M 52.192,27.754 C 52.192,41.366 41.157,52.401 27.546,52.401 C 13.934,52.401 2.900,41.366 2.900,27.754 C 2.900,14.143 13.934,3.109 27.546,3.109 C 41.157,3.109 52.192,14.143 52.192,27.754 Z"/>
+            <Path Fill="#ff1445a3" Data="F1 M 4.691,36.747 C 4.691,36.747 16.691,26.372 25.191,23.372 C 34.627,20.041 51.317,20.997 51.317,20.997 C 51.317,20.997 54.249,31.901 49.567,39.122 C 45.219,45.823 40.229,49.790 36.192,51.122 C 32.215,52.434 23.882,53.956 16.566,50.163 C 6.358,44.872 4.691,36.747 4.691,36.747 Z"/>
+            <TextBlock Foreground="#fffff7f7" Canvas.Left="21.5" Canvas.Top="0" FontSize="50.00" FontFamily="Arial">i</TextBlock>
+        </Canvas>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0">
+            <TextBlock FontSize="11pt" FontWeight="Bold" Name="mainText" Text="Hallo Welt" TextWrapping="Wrap"
+                      HorizontalAlignment="Center"/>
+            <TextBlock Margin="0,5,0,0" Name="subText" Text="Hallo Welt" TextWrapping="Wrap"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+        
+        <DockPanel Grid.Row="1" Grid.ColumnSpan="2" Background="{StaticResource windowBackgroundAlternativBrush}">
+            
+            <Button Height="23" Margin="0,0,5,0" Name="btnNo" Width="90"   DockPanel.Dock="Right" Visibility="Collapsed">
+                <TextBlock Margin="0,1,0,0" Text="Nein" />
+            </Button>
+            
+            <Button Height="23" Margin="0,0,5,0" Name="btnOk" Width="90"   DockPanel.Dock="Right">
+                <TextBlock Margin="0,1,0,0" Text="Ok" />
+            </Button>
+
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+
+
+    </Grid>
+</Window>

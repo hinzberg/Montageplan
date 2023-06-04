@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <GridView x:Key="userGridView">
+
+    <GridViewColumn Width="200">
+        <GridViewColumn.Header>
+            <GridViewColumnHeader Content="Benutzername" HorizontalContentAlignment="Left" />
+        </GridViewColumn.Header>
+        <GridViewColumn.CellTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Username}" />
+            </DataTemplate>
+        </GridViewColumn.CellTemplate>
+    </GridViewColumn>
+
+    <GridViewColumn Width="180">
+        <GridViewColumn.Header>
+            <GridViewColumnHeader Content="Status" HorizontalContentAlignment="Left" />
+        </GridViewColumn.Header>
+        <GridViewColumn.CellTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding UserStatus}" />
+            </DataTemplate>
+        </GridViewColumn.CellTemplate>
+    </GridViewColumn>
+
+    </GridView>
+
+</ResourceDictionary>

@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Montageplan.EasyOptions.Panels.GeneralOptionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             Background="Transparent"
+             FontSize="8.8pt"
+             Height="350" 
+             Width="800">
+
+    <StackPanel Orientation="Vertical">
+            <TextBlock Margin="0,0,0,0" FontSize="11pt" Text="(Allgemein) Test Test"/>
+        </StackPanel>
+
+</UserControl>

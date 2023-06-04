@@ -1,0 +1,54 @@
+﻿<Window x:Class="Montageplan.Windows.MitarbeiterListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:custom="clr-namespace:PolePosition.CustomToolbar"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontFamily="Arial"
+        Background="{StaticResource windowBackgroundBrush}"
+        Icon="..\..\Resources\montysymbol.png"
+        Title="Mitarbeiter" Height="500" Width="800">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\ItemTemplates\MitarbeiterGridView.xaml" />
+                <ResourceDictionary Source="..\ControlTemplates\ItemControlTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <custom:ToolBar Grid.Row="0" Margin="0"  x:Name="mainToolbar" Background="{StaticResource windowBackgroundAlternativBrush}"/>
+
+        <!--Die Liste-->
+        <ListView Name="mitarbeiterListView" View="{StaticResource mitarbeiterGridView}" Grid.Row="1" Margin="0" BorderThickness="0">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="editMitarbeiterMenuItem" Header="Bearbeiten..." FontWeight="Bold" />
+                    <MenuItem Name="newMitarbeiterMenuItem" Header="Neu..." />
+                    <Separator />
+                    <MenuItem Name="deleteMitarbeiterMenuItem" Header="Löschen"  />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+
+        <!--Schaltflächen, unten-->
+        <DockPanel Grid.Row="2" Background="{StaticResource windowBackgroundAlternativBrush}">
+            <Button Height="23" Margin="0,0,5,0" Name="btnOk" Width="90" DockPanel.Dock="Right">
+                <TextBlock Margin="0,1,0,0" Text="Ok" />
+            </Button>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+    </Grid>
+</Window>

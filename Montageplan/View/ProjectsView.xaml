@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Montageplan.View.ProjectsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:view="clr-namespace:Montageplan.View"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ItemTemplates\ProjectItemTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <!--Höhe der Items überschreiben-->
+            <Style TargetType="ListBoxItem" BasedOn="{StaticResource lbiBaseStyle}">
+                <Setter Property="Height" Value="50" />
+            </Style>
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <view:ShrinkExpander x:Name="expander" IsExpanded="True" VerticalAlignment="Top" Background="{StaticResource windowBackgroundBrush}">
+        <view:ShrinkExpander.Header>
+            <Label Content="Projekte" Height="27" Padding="0" Margin="5,0,15,0"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"  />
+        </view:ShrinkExpander.Header>
+        <Grid Background="White" Margin="3,0,0,0" Width="215">
+            <!--Die Breite MUSS im Grid gesetzt werden und NICHT außerhalb des Grids. Sonst gibt es Breitenfehler, wenn der Expander zugeklappt wird-->
+            <ListBox BorderThickness="0" Grid.Row="1" Name="projectsListBox" ItemTemplate="{StaticResource projectTemplate}" />
+        </Grid>
+    </view:ShrinkExpander>
+
+</UserControl>

@@ -1,0 +1,23 @@
+﻿<Application x:Class="Montageplan.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View\ControlTemplates\ButtonControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\MainMenuControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\MenueControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\ContextMenuControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\CheckBoxBlueControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\ComboBoxControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\ProgressBarControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\RadioButtonBlueControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\TextBoxControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\ItemControlTemplates.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\ScrollViewerControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\SliderControlTemplate.xaml" />
+                <ResourceDictionary Source="View\ControlTemplates\QuickInfoControlTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

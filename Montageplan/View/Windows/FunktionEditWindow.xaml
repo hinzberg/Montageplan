@@ -1,0 +1,38 @@
+﻿<Window x:Class="Montageplan.View.Windows.FunktionEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontFamily="Arial" FontSize="10pt"
+        Icon="..\..\Resources\montysymbol.png"
+        Background="{StaticResource windowBackgroundBrush}"
+        Title="Funktion bearbeiten" 
+         Height="140" Width="300">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <!--Content-->
+        <StackPanel Orientation="Vertical" Margin="5">
+            <Label>Bezeichnung</Label>
+            <TextBox Name="txtName"/>
+        </StackPanel>
+
+        <!--Die Schaltflächen-->
+        <DockPanel Grid.Row="1" Background="{StaticResource windowBackgroundAlternativBrush}">
+            <Button Height="23" Margin="0,0,5,0" Name="btnCancel" Width="90" DockPanel.Dock="Right">
+                <TextBlock Margin="0,1,0,0" Text="Abbrechen" />
+            </Button>
+            <Button Height="23" Margin="0,0,5,0" Name="btnSubmit" Width="90"   DockPanel.Dock="Right" IsDefault="True">
+                <TextBlock Margin="0,1,0,0" Text="Übernehmen" />
+            </Button>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+
+
+    </Grid>
+</Window>

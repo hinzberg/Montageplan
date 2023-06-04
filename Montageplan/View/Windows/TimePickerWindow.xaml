@@ -1,0 +1,37 @@
+﻿<Window x:Class="Montageplan.View.Windows.TimePickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Montageplan.View.Windows"
+        Background="{StaticResource windowBackgroundBrush}"
+         FontFamily="Arial" FontSize="10pt"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="..\..\Resources\montysymbol.png"
+        Title="Uhrzeit wählen" Height="200" Width="320">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <local:TimePickerControl Grid.Row="0" 
+                                 Margin="10,10,10,0"
+                                 x:Name="timePickerCtrl"/>
+
+        <CheckBox Name="allDayCheckBox" Grid.Row="1" Content="Projekt ganztägig" VerticalAlignment="Center" Margin="10,0,0,0" />
+        
+        <!--Die Schaltflächen-->
+        <DockPanel Grid.Row="2" Background="{StaticResource windowBackgroundAlternativBrush}">
+            <Button Height="23" Margin="0,0,5,0" Name="btnCancel" Width="90" DockPanel.Dock="Right">
+                <TextBlock Margin="0,1,0,0" Text="Abbrechen" />
+            </Button>
+            <Button Height="23" Margin="0,0,5,0" Name="btnSubmit" Width="90"   DockPanel.Dock="Right">
+                <TextBlock  Margin="0,1,0,0" Text="Übernehmen" />
+            </Button>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+    </Grid>
+
+</Window>

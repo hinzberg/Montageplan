@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a7348264fc742919f97b580f2e01460" Name="Diagramm1" ShowGrid="false" DisplayType="true">
+        <EntityTypeShape EntityType="MontageplanModel.Engagements" Width="1.625" PointX="5.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.EngagementsMitarbeiter" Width="2" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.EngagementsProjekte" PointX="7.75" PointY="0.5" Width="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.Fehlzeitarten" Width="1.625" PointX="2.875" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.Fehlzeiten" Width="1.875" PointX="0.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.Funktionen" Width="1.5" PointX="1.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.Kolonnen" Width="1.75" PointX="5.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.KolonnenMitarbeiter" Width="1.875" PointX="3.125" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.MetaData" Width="1.5" PointX="7.375" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.Mitarbeiter" Width="2.125" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.Projekte" Width="1.875" PointX="7.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MontageplanModel.Users" Width="2" PointX="4.875" PointY="5" IsExpanded="true" />
+        <AssociationConnector ManuallyRouted="false" Association="MontageplanModel.FK_EngagementId" />
+        <AssociationConnector Association="MontageplanModel.FK_EngagementsId" ManuallyRouted="false" />
+        <AssociationConnector Association="MontageplanModel.FK_KolonneId" ManuallyRouted="false" />
+        <AssociationConnector Association="MontageplanModel.MitarbeiterEngagementsMitarbeiter" />
+        <AssociationConnector Association="MontageplanModel.FunktionenMitarbeiter" />
+        <AssociationConnector Association="MontageplanModel.MitarbeiterKolonnenMitarbeiter" />
+        <AssociationConnector Association="MontageplanModel.ProjekteEngagementsProjekte" />
+        <AssociationConnector Association="MontageplanModel.KolonnenEngagements" />
+        <AssociationConnector Association="MontageplanModel.FehlzeitartenFehlzeiten" />
+        <AssociationConnector Association="MontageplanModel.MitarbeiterFehlzeiten" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

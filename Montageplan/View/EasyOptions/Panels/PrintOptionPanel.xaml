@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Montageplan.View.EasyOptions.Panels.PrintOptionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             Background="Transparent"
+             FontFamily="Arial" FontSize="10pt">
+    
+    <StackPanel Orientation="Vertical">
+        <TextBlock FontSize="11pt" Margin="0,2,0,2" Text="Seitenränder"/>
+        <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
+            <TextBlock VerticalAlignment="Center" Margin="0,2,0,2" Text="Abstand X-Ausrichtung" />
+            <TextBox Margin="10,0,0,0" Width="40" Name="txtPageOffsetX" />
+        </StackPanel>
+        <Rectangle Height="5"/>
+        <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+            <TextBlock VerticalAlignment="Center" Margin="0,2,0,2" Text="Abstand Y-Ausrichtung" />
+            <TextBox Margin="10,0,0,0" Width="40" Name="txtPageOffsetY" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

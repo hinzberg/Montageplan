@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Montageplan.View.EasyOptions.Panels.DisplayOptionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             FontFamily="Arial" FontSize="10pt"
+             Background="Transparent">
+
+    <StackPanel Orientation="Vertical">
+
+        <TextBlock FontSize="12pt" Text="Tage im Kalender"/>
+        <RadioButton GroupName="daysAlignment" Margin="5,5,0,0" 
+                     Name="festBreiteRadioButton">Feste Breite</RadioButton>
+        <RadioButton GroupName="daysAlignment" Margin="5,2,0,0" 
+                     Name="dynamischeBreiteRadioButton">Dynamische Breite</RadioButton>
+
+        <TextBlock Margin="0,5,0,0" FontSize="12pt" Text="Für Mitarbeiter anzeigen"/>
+        <CheckBox Margin="5,5,0,0"  Name="checkDisplayVorname">Vorname</CheckBox>
+        <CheckBox Margin="5,2,0,0"  Name="checkDisplayNachname">Nachname</CheckBox>
+        <CheckBox Margin="5,2,0,0"  Name="checkDisplayBezeichnung">Bezeichnung</CheckBox>
+
+        <TextBlock Margin="0,5,0,0" FontSize="12pt" Text="Für Kolonne anzeigen"/>
+        <CheckBox Margin="5,5,0,0"  Name="checkShowKolonnePrefix">Prefix "Kolonne"</CheckBox>
+
+        <TextBlock Margin="0,5,0,0" FontSize="12pt" Text="Farbe für Datum"/>
+        <Border Name="colorDisplay" DockPanel.Dock="Right" Width="23" Height="23" 
+                        ToolTip="Farbe auswählen"
+                        BorderThickness="1"  HorizontalAlignment="Left" Margin="5,2,0,0"
+                    BorderBrush="{StaticResource genericControlBorderBrush}" SnapsToDevicePixels="True">
+            <Rectangle Height="15" Width="15" Fill="{StaticResource ColorsImageBrush}"/>
+        </Border>
+
+
+    </StackPanel>
+</UserControl>

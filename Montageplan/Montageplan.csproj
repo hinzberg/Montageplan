@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E248D20-E241-406A-A589-BC36053E26E8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Montageplan</RootNamespace>
+    <AssemblyName>Montageplan</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Ausgabe\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEV</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Ausgabe\</OutputPath>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Montageplan.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>montageplan.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Model\CalendarDate.cs" />
+    <Compile Include="Model\Classes\OSInfo.cs" />
+    <Compile Include="Model\Classes\OSVersionChecker.cs" />
+    <Compile Include="Model\Classes\WindowIconSetter.cs" />
+    <Compile Include="Model\DAL\Database\DatabaseBackupper.cs" />
+    <Compile Include="Model\DAL\Database\DatabaseContext.cs" />
+    <Compile Include="Model\DAL\Database\DatabaseMetaData.cs" />
+    <Compile Include="Model\DAL\Database\EngagementEntity.cs" />
+    <Compile Include="Model\DAL\Database\EngagementMitarbeiterEntity.cs" />
+    <Compile Include="Model\DAL\Database\EngagementProjektEntity.cs" />
+    <Compile Include="Model\DAL\Database\EngagementsCombinedDbTable.cs" />
+    <Compile Include="Model\DAL\Database\EngagementsMitarbeiterDbTable.cs" />
+    <Compile Include="Model\DAL\Database\EngagementsProjekteDbTable.cs" />
+    <Compile Include="Model\DAL\Database\FehlzeitartenDbTable.cs" />
+    <Compile Include="Model\DAL\Database\FunktionenDbTable.cs" />
+    <Compile Include="Model\DAL\Database\KolonnenDbTable.cs" />
+    <Compile Include="Model\DAL\Database\KolonnenMitarbeiterDbTable.cs" />
+    <Compile Include="Model\DAL\Database\KolonnenMitarbeiterItem.cs" />
+    <Compile Include="Model\DAL\Database\MetaDataDbTable.cs" />
+    <Compile Include="Model\DAL\Database\MetaDataItem.cs" />
+    <Compile Include="Model\DAL\Database\MitarbeiterDbTable.cs" />
+    <Compile Include="Model\DAL\Database\FehlzeitenDbTable.cs" />
+    <Compile Include="Model\DAL\Database\ProjekteDbTable.cs" />
+    <Compile Include="Model\DAL\Database\ReaderDatabaseContext.cs" />
+    <Compile Include="Model\DAL\Database\SqlCeDatabase.cs" />
+    <Compile Include="Model\DAL\Database\SqlCeDatabaseCreator.cs" />
+    <Compile Include="Model\DAL\Database\DatabaseUpdater.cs" />
+    <Compile Include="Model\DAL\Database\SqlCeReadableDatabase.cs" />
+    <Compile Include="Model\DAL\Database\UsersDbTable.cs" />
+    <Compile Include="Model\DayMitarbeiterRepository.cs" />
+    <Compile Include="Model\AppConfig.cs" />
+    <Compile Include="Model\CalendarDay.cs" />
+    <Compile Include="Model\CalendarDayRepository.cs" />
+    <Compile Include="Model\CalendarWeek.cs" />
+    <Compile Include="Model\EngagementProjekt.cs" />
+    <Compile Include="Model\EngagementProjektRepository.cs" />
+    <Compile Include="Model\FreeMitarbeiterFilter.cs" />
+    <Compile Include="Model\ListBoxDropHelper.cs" />
+    <Compile Include="Model\Engagement.cs" />
+    <Compile Include="Model\EngagementRepository.cs" />
+    <Compile Include="Model\DragAdorner.cs" />
+    <Compile Include="Model\AnchestorElementGetter.cs" />
+    <Compile Include="Model\Extentions.cs" />
+    <Compile Include="Model\Fehlzeitart.cs" />
+    <Compile Include="Model\FunktionRepository.cs" />
+    <Compile Include="Model\DayMitarbeiter.cs" />
+    <Compile Include="Model\ListBoxDragHelper.cs" />
+    <Compile Include="Model\MitarbeiterDayStatus.cs" />
+    <Compile Include="Model\MitarbeiterFehlzeit.cs" />
+    <Compile Include="Model\MontageCalendar.cs" />
+    <Compile Include="Model\NotificationCenter.cs" />
+    <Compile Include="Model\Notifications.cs" />
+    <Compile Include="Model\ObservableModel.cs" />
+    <Compile Include="Model\PrintSettings.cs" />
+    <Compile Include="Model\ProjektDetails.cs" />
+    <Compile Include="Model\ProjektStatus.cs" />
+    <Compile Include="Model\ProjektTime.cs" />
+    <Compile Include="Model\SourceDragHelper.cs" />
+    <Compile Include="Model\SubElementGetter.cs" />
+    <Compile Include="Model\ControlInputValidator.cs" />
+    <Compile Include="Model\DAL\ConfigsXml.cs" />
+    <Compile Include="Model\DAL\DirectoryCreator.cs" />
+    <Compile Include="Model\DateHelper.cs" />
+    <Compile Include="Model\KolonneRepository.cs" />
+    <Compile Include="Model\MessageBoxHelper.cs" />
+    <Compile Include="Model\MitarbeiterRepository.cs" />
+    <Compile Include="Model\ProjektRepository.cs" />
+    <Compile Include="Model\RepositoryContainer.cs" />
+    <Compile Include="Model\TargetDropHelper.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserRepository.cs" />
+    <Compile Include="Model\UserSettings.cs" />
+    <Compile Include="Presenter\CalendarDayPresenter.cs" />
+    <Compile Include="Presenter\CalendarEngagementPresenter.cs" />
+    <Compile Include="Presenter\CalendarMitarbeiterPresenter.cs" />
+    <Compile Include="Presenter\CalendarPresenter.cs" />
+    <Compile Include="Presenter\FunktionEditPresenter.cs" />
+    <Compile Include="Presenter\FunktionListPresenter.cs" />
+    <Compile Include="Presenter\HolidayEditPresenter.cs" />
+    <Compile Include="Presenter\KolonneEditPresenter.cs" />
+    <Compile Include="Presenter\KolonneListPresenter.cs" />
+    <Compile Include="Presenter\MitarbeiterChoosePresenter.cs" />
+    <Compile Include="Presenter\MitarbeiterEditPresenter.cs" />
+    <Compile Include="Presenter\MitarbeiterListPresenter.cs" />
+    <Compile Include="Presenter\ProjektEditPresenter.cs" />
+    <Compile Include="Presenter\ProjektListPresenter.cs" />
+    <Compile Include="Presenter\TimespanSelectPresenter.cs" />
+    <Compile Include="Presenter\UserEditPresenter.cs" />
+    <Compile Include="Presenter\UserListPresenter.cs" />
+    <Compile Include="Print\BaseTemplateFooterFactory.cs" />
+    <Compile Include="Print\Container\ContentContainerBase.cs" />
+    <Compile Include="Print\Container\DemoPageContainer.cs" />
+    <Compile Include="Print\Container\ProjektDetailsContainer.cs" />
+    <Compile Include="Print\Container\ProjektDetailsVM.cs" />
+    <Compile Include="Print\FlowDocumentPreviewWindow.xaml.cs">
+      <DependentUpon>FlowDocumentPreviewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Print\MainPrinter.cs" />
+    <Compile Include="Print\Pages\BaseFlowPageTemplate.xaml.cs">
+      <DependentUpon>BaseFlowPageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Print\BaseTemplateFooterInfo.cs" />
+    <Compile Include="Print\Pages\DemoPageFlowTemplate.xaml.cs">
+      <DependentUpon>DemoPageFlowTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Print\FlowCanvasCreator.cs" />
+    <Compile Include="Print\FlowContentFactory.cs" />
+    <Compile Include="Print\FlowDocumentCreator.cs" />
+    <Compile Include="Print\FlowDocumentPreviewContainer.cs" />
+    <Compile Include="Print\Pages\ProjektDetailsFlowTemplate.xaml.cs">
+      <DependentUpon>ProjektDetailsFlowTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BindingCommand.cs" />
+    <Compile Include="Model\ErrorLogger.cs" />
+    <Compile Include="Model\Kalender.cs" />
+    <Compile Include="Model\Kolonne.cs" />
+    <Compile Include="Model\Mitarbeiter.cs" />
+    <Compile Include="Model\MitarbeiterFunktion.cs" />
+    <Compile Include="Model\Projekt.cs" />
+    <Compile Include="Model\Repository.cs" />
+    <Compile Include="Presenter\SplashPresenter.cs" />
+    <Compile Include="ViewModel\DayKolonneViewModel.cs" />
+    <Compile Include="ViewModel\EngagementProjektViewModel.cs" />
+    <Compile Include="ViewModel\KolonneViewModel.cs" />
+    <Compile Include="ViewModel\DayMitarbeiterViewModel.cs" />
+    <Compile Include="ViewModel\MitarbeiterChooseViewModel.cs" />
+    <Compile Include="ViewModel\MitarbeiterFunktionViewModel.cs" />
+    <Compile Include="ViewModel\MitarbeiterViewModel.cs" />
+    <Compile Include="ViewModel\ProjektViewModelEventArgs.cs" />
+    <Compile Include="Presenter\MainPresenter.cs" />
+    <Compile Include="Presenter\ProjectsPresenter.cs" />
+    <Compile Include="ViewModel\ProjektViewModel.cs" />
+    <Compile Include="Model\PropertyFormatter.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
+    <Compile Include="Model\NotificationModel.cs" />
+    <Compile Include="View\CalendarEngagementView.xaml.cs">
+      <DependentUpon>CalendarEngagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CalendarMitarbeiterView.xaml.cs">
+      <DependentUpon>CalendarMitarbeiterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CalendarDaysHorizontalStackPanel.cs" />
+    <Compile Include="View\CalendarDayView.xaml.cs">
+      <DependentUpon>CalendarDayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CalendarView.xaml.cs">
+      <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControls\ToolBar.xaml.cs" />
+    <Compile Include="View\DateNavigationBar.xaml.cs">
+      <DependentUpon>DateNavigationBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presenter\DateNavigationBarPresenter.cs" />
+    <Compile Include="View\EasyOptions\EasyOptionsWindow.xaml.cs">
+      <DependentUpon>EasyOptionsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EasyOptions\IOptionPanel.cs" />
+    <Compile Include="View\EasyOptions\OptionNavigationItemVM.cs" />
+    <Compile Include="View\EasyOptions\Panels\AboutOptionPanel.xaml.cs">
+      <DependentUpon>AboutOptionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EasyOptions\Panels\DisplayOptionPanel.xaml.cs">
+      <DependentUpon>DisplayOptionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EasyOptions\Panels\GeneralOptionPanel.xaml.cs">
+      <DependentUpon>GeneralOptionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EasyOptions\Panels\PrintOptionPanel.xaml.cs">
+      <DependentUpon>PrintOptionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageBox\MessageBoxWindow.xaml.cs">
+      <DependentUpon>MessageBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShrinkExpander.cs" />
+    <Compile Include="View\WiederholendeFehltageUserControl.xaml.cs" />
+    <Compile Include="View\Windows\ColorPickerWindow.xaml.cs">
+      <DependentUpon>ColorPickerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\DatePickerControl.xaml.cs">
+      <DependentUpon>DatePickerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\DatePickerWindow.xaml.cs">
+      <DependentUpon>DatePickerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\DualDatePickerWindow.xaml.cs">
+      <DependentUpon>DualDatePickerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\FunktionEditWindow.xaml.cs">
+      <DependentUpon>FunktionEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\FunktionListWindow.xaml.cs">
+      <DependentUpon>FunktionListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\GenericWaitWindow.xaml.cs">
+      <DependentUpon>GenericWaitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HolidayEditWindow.xaml.cs">
+      <DependentUpon>HolidayEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\KolonneEditWindow.xaml.cs">
+      <DependentUpon>KolonneEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\KolonneListWindow.xaml.cs">
+      <DependentUpon>KolonneListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MitarbeiterChooseWindow.xaml.cs">
+      <DependentUpon>MitarbeiterChooseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\SplashWindow.xaml.cs">
+      <DependentUpon>SplashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MitarbeiterEditWindow.xaml.cs">
+      <DependentUpon>MitarbeiterEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MitarbeiterListWindow.xaml.cs">
+      <DependentUpon>MitarbeiterListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ProjektEditWindow.xaml.cs">
+      <DependentUpon>ProjektEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ProjektListWindow.xaml.cs">
+      <DependentUpon>ProjektListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\TimePickerControl.xaml.cs" />
+    <Compile Include="View\Windows\TimePickerItemViewModel.cs" />
+    <Compile Include="View\Windows\TimePickerWindow.xaml.cs" />
+    <Compile Include="View\Windows\TimespanSelectWindow.xaml.cs">
+      <DependentUpon>TimespanSelectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\UserEditWindow.xaml.cs">
+      <DependentUpon>UserEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\UserListWindow.xaml.cs">
+      <DependentUpon>UserListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZoomControl.xaml.cs">
+      <DependentUpon>ZoomControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_Test\ObjectFactory.cs" />
+    <Page Include="Print\FlowDocumentPreviewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Print\Pages\BaseFlowPageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Print\Pages\DemoPageFlowTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Print\Pages\ProjektDetailsFlowTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CalendarEngagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CalendarMitarbeiterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CalendarDayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CalendarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ControlTemplates\ContextMenuControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\QuickInfoControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\ScrollViewerControlTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ControlTemplates\SliderControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\TextBoxControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CustomControls\ToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CustomControls\ToolBarImageBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DateNavigationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EasyOptions\Panels\DisplayOptionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EasyOptions\Panels\PrintOptionPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemTemplates\DragAdornerTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemTemplates\FunktionenGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ItemTemplates\HolidayGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ItemTemplates\KolonneGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemTemplates\MitarbeiterGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemTemplates\ProjectItemTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemTemplates\ProjektGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemTemplates\UserGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageBox\MessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProjectsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ToolbarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\ProjectsView.xaml.cs">
+      <DependentUpon>ProjectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ToolbarView.xaml.cs">
+      <DependentUpon>ToolbarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\EasyOptions\EasyOptionsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EasyOptions\Panels\AboutOptionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EasyOptions\Panels\GeneralOptionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\ApplicationColorTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\ButtonControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\CheckBoxBlueControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\ComboBoxControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\MainMenuControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\MenueControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\ProgressBarControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\RadioButtonBlueControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\WiederholendeFehltageUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\ColorPickerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\DatePickerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\DatePickerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\DualDatePickerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\FunktionEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\FunktionListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\GenericWaitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HolidayEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\KolonneEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\KolonneListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ControlTemplates\ItemControlTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\MitarbeiterChooseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\SplashWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MitarbeiterEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\MitarbeiterListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\ProjektEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\ProjektListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\TimePickerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\TimePickerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\TimespanSelectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\UserEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\UserListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ZoomControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Montageplan.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\project_x48.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\project_x24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Meta\changelog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\montageplan.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="montageplan.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Meta\todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\colorswatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\calendar.ico" />
+    <Resource Include="Resources\calendar32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\star_fav_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\star_pot_fav_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\montysymbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dokumentation\Tabellen.html" />
+    <Resource Include="Dokumentation\ER-Diagramm.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

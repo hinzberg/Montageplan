@@ -1,0 +1,129 @@
+﻿<Window x:Class="Montageplan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view="clr-namespace:Montageplan.View"
+        FontFamily="Arial"
+        Title="Montageplan" Height="650" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Icon="Resources/montysymbol.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        
+        <!--Menü-->
+        <Menu Grid.Row="0" Name="MainMenu">
+            <MenuItem Name="MenuGroupVerwaltung" Header="Verwaltung" Height="21" VerticalAlignment="Bottom">
+                <MenuItem Name="mainMenuFunctions">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Funktionen..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Name="mainMenuStaff">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Mitarbeiter..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Name="mainMenuCrew">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Kolonnen..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Name="mainMenuProjekt">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="Projekte..." Margin="0,3,0,0"  ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Name="mainMenuUsers">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Benutzer..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Drucken">
+                <MenuItem Name="mainMenuPrintReport">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="Tagesberichte..." Margin="0,3,0,0"  ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Export" IsEnabled="False">
+            </MenuItem>
+            <MenuItem Header="Ansicht">
+                <MenuItem Name="showHideMitarbeiterMenuItem">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="showHideMitarbeiterTextBlock" Text="Mitarbeiterlisten anzeigen/ausblenden" 
+                                       Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                
+                
+                <!--<MenuItem Name="mainMenuViewProjects">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Projekte ausblenden" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Name="mainMenuViewToolbar">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Projekte ausblenden" Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>-->
+            </MenuItem>
+            <MenuItem Header="Extras">
+                <MenuItem Name="mainMenuViewOptions">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Optionen..." Margin="0,3,0,0" ToolTipService.IsEnabled="False"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <!--Content-->
+        <Grid Grid.Row="1" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="50"/>-->
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">       
+                <view:ProjectsView x:Name="projectsView" />
+                <Border HorizontalAlignment="Right" Width="3" BorderThickness="0" Background="{StaticResource windowBackgroundAlternativBrush}" />
+            </Grid>
+            <view:CalendarView x:Name="calenderView" Grid.Column="1"/>
+            <!--<view:ToolbarView x:Name="toolbarView" Grid.Column="2"/>
+            <GridSplitter VerticalAlignment="Stretch" Grid.Column="2"  ShowsPreview="True" HorizontalAlignment="Left" Width="3" Background="{StaticResource windowBackgroundAlternativBrush}" />-->
+        </Grid>
+
+        <!--Statusleiste-->
+        <Border Grid.Row="2" Background="{StaticResource windowBackgroundBrush}"
+                BorderBrush="{StaticResource windowBackgroundAlternativBrush}" BorderThickness="0,2,0,0">
+            <StackPanel  Orientation="Horizontal" Name="StatusBarStack" Background="Transparent">
+            </StackPanel>
+        </Border>
+        
+    </Grid>
+</Window>

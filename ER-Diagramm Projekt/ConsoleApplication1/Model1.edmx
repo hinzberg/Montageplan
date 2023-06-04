@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MontageplanModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="MontageplanModelStoreContainer">
+          <EntitySet Name="Engagements" EntityType="MontageplanModel.Store.Engagements" store:Type="Tables" />
+          <EntitySet Name="EngagementsMitarbeiter" EntityType="MontageplanModel.Store.EngagementsMitarbeiter" store:Type="Tables" />
+          <EntitySet Name="EngagementsProjekte" EntityType="MontageplanModel.Store.EngagementsProjekte" store:Type="Tables" />
+          <EntitySet Name="Fehlzeitarten" EntityType="MontageplanModel.Store.Fehlzeitarten" store:Type="Tables" />
+          <EntitySet Name="Fehlzeiten" EntityType="MontageplanModel.Store.Fehlzeiten" store:Type="Tables" />
+          <EntitySet Name="Funktionen" EntityType="MontageplanModel.Store.Funktionen" store:Type="Tables" />
+          <EntitySet Name="Kolonnen" EntityType="MontageplanModel.Store.Kolonnen" store:Type="Tables" />
+          <EntitySet Name="KolonnenMitarbeiter" EntityType="MontageplanModel.Store.KolonnenMitarbeiter" store:Type="Tables" />
+          <EntitySet Name="MetaData" EntityType="MontageplanModel.Store.MetaData" store:Type="Tables" />
+          <EntitySet Name="Mitarbeiter" EntityType="MontageplanModel.Store.Mitarbeiter" store:Type="Tables" />
+          <EntitySet Name="Projekte" EntityType="MontageplanModel.Store.Projekte" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="MontageplanModel.Store.Users" store:Type="Tables" />
+          <AssociationSet Name="FK_EngagementId" Association="MontageplanModel.Store.FK_EngagementId">
+            <End EntitySet="Engagements" Role="Engagements" />
+            <End EntitySet="EngagementsProjekte" Role="EngagementsProjekte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EngagementsId" Association="MontageplanModel.Store.FK_EngagementsId">
+            <End Role="Engagements" EntitySet="Engagements" />
+            <End Role="EngagementsMitarbeiter" EntitySet="EngagementsMitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KolonneId" Association="MontageplanModel.Store.FK_KolonneId">
+            <End Role="Kolonnen" EntitySet="Kolonnen" />
+            <End Role="KolonnenMitarbeiter" EntitySet="KolonnenMitarbeiter" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Engagements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="KolonneId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EngagementsMitarbeiter">
+          <Key>
+            <PropertyRef Name="EngagementsId" />
+            <PropertyRef Name="MitarbeiterId" />
+          </Key>
+          <Property Name="EngagementsId" Type="int" Nullable="false" />
+          <Property Name="MitarbeiterId" Type="int" Nullable="false" />
+          <Property Name="IstFuehrer" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EngagementsProjekte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="EngagementId" Nullable="false" Type="int" />
+          <Property Name="ProjektId" Nullable="false" Type="int" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Fehlzeitarten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Bezeichnung" Type="nvarchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Fehlzeiten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FehlzeitartId" Type="int" Nullable="false" />
+          <Property Name="MitarbeiterId" Type="int" Nullable="false" />
+          <Property Name="Startdatum" Type="datetime" Nullable="false" />
+          <Property Name="Endedatum" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Funktionen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Kolonnen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nummer" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Bezeichnung" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="HexColor" Type="nchar" Nullable="false" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="KolonnenMitarbeiter">
+          <Key>
+            <PropertyRef Name="MitarbeiterId" />
+            <PropertyRef Name="KolonneId" />
+          </Key>
+          <Property Name="MitarbeiterId" Type="int" Nullable="false" />
+          <Property Name="KolonneId" Type="int" Nullable="false" />
+          <Property Name="IstFuehrer" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetaData">
+          <Key>
+            <PropertyRef Name="MetaKey" />
+          </Key>
+          <Property Name="MetaKey" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="400" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+            Warnung 6035: Beziehung 'FK_MitarbeiterId' enthält Spalten, die nicht zum Schlüssel der Tabelle auf der Primärseite der Beziehung gehören. Die Beziehung wurde ausgeschlossen.
+            -->
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Vorname" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="KannFuehrerSein" Type="bit" Nullable="false" />
+          <Property Name="FunktionId" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Projekte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Startdatum" Type="datetime" />
+          <Property Name="Endedatum" Type="datetime" />
+          <Property Name="HexColor" Type="nchar" Nullable="false" MaxLength="9" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="IsTemplate" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="IsAdministrator" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EngagementId">
+          <End Type="MontageplanModel.Store.Engagements" Multiplicity="1" Role="Engagements">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MontageplanModel.Store.EngagementsProjekte" Multiplicity="*" Role="EngagementsProjekte" />
+          <ReferentialConstraint>
+            <Principal Role="Engagements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EngagementsProjekte">
+              <PropertyRef Name="EngagementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EngagementsId">
+          <End Role="Engagements" Type="MontageplanModel.Store.Engagements" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EngagementsMitarbeiter" Type="MontageplanModel.Store.EngagementsMitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engagements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EngagementsMitarbeiter">
+              <PropertyRef Name="EngagementsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KolonneId">
+          <End Role="Kolonnen" Type="MontageplanModel.Store.Kolonnen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KolonnenMitarbeiter" Type="MontageplanModel.Store.KolonnenMitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kolonnen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KolonnenMitarbeiter">
+              <PropertyRef Name="KolonneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MontageplanModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="MontageplanEntities">
+          <EntitySet Name="Engagements" EntityType="MontageplanModel.Engagements" />
+          <EntitySet Name="EngagementsMitarbeiter" EntityType="MontageplanModel.EngagementsMitarbeiter" />
+          <EntitySet Name="EngagementsProjekte" EntityType="MontageplanModel.EngagementsProjekte" />
+          <EntitySet Name="Fehlzeitarten" EntityType="MontageplanModel.Fehlzeitarten" />
+          <EntitySet Name="Fehlzeiten" EntityType="MontageplanModel.Fehlzeiten" />
+          <EntitySet Name="Funktionen" EntityType="MontageplanModel.Funktionen" />
+          <EntitySet Name="Kolonnen" EntityType="MontageplanModel.Kolonnen" />
+          <EntitySet Name="KolonnenMitarbeiter" EntityType="MontageplanModel.KolonnenMitarbeiter" />
+          <EntitySet Name="MetaData" EntityType="MontageplanModel.MetaData" />
+          <EntitySet Name="Projekte" EntityType="MontageplanModel.Projekte" />
+          <EntitySet Name="Users" EntityType="MontageplanModel.Users" />
+          <AssociationSet Name="FK_EngagementId" Association="MontageplanModel.FK_EngagementId">
+            <End EntitySet="Engagements" Role="Engagements" />
+            <End EntitySet="EngagementsProjekte" Role="EngagementsProjekte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EngagementsId" Association="MontageplanModel.FK_EngagementsId">
+            <End Role="Engagements" EntitySet="Engagements" />
+            <End Role="EngagementsMitarbeiter" EntitySet="EngagementsMitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KolonneId" Association="MontageplanModel.FK_KolonneId">
+            <End Role="Kolonnen" EntitySet="Kolonnen" />
+            <End Role="KolonnenMitarbeiter" EntitySet="KolonnenMitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="MitarbeiterEngagementsMitarbeiter" Association="MontageplanModel.MitarbeiterEngagementsMitarbeiter">
+            <End Role="Mitarbeiter" EntitySet="MitarbeiterSatz" />
+            <End Role="EngagementsMitarbeiter" EntitySet="EngagementsMitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FunktionenMitarbeiter" Association="MontageplanModel.FunktionenMitarbeiter">
+            <End Role="Funktionen" EntitySet="Funktionen" />
+            <End Role="Mitarbeiter" EntitySet="MitarbeiterSatz" />
+          </AssociationSet>
+          <EntitySet Name="MitarbeiterSatz" EntityType="MontageplanModel.Mitarbeiter" />
+          <AssociationSet Name="MitarbeiterKolonnenMitarbeiter" Association="MontageplanModel.MitarbeiterKolonnenMitarbeiter">
+            <End Role="Mitarbeiter" EntitySet="MitarbeiterSatz" />
+            <End Role="KolonnenMitarbeiter" EntitySet="KolonnenMitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="ProjekteEngagementsProjekte" Association="MontageplanModel.ProjekteEngagementsProjekte">
+            <End EntitySet="Projekte" Role="Projekte" />
+            <End EntitySet="EngagementsProjekte" Role="EngagementsProjekte" />
+          </AssociationSet>
+          <AssociationSet Name="KolonnenEngagements" Association="MontageplanModel.KolonnenEngagements">
+            <End Role="Kolonnen" EntitySet="Kolonnen" />
+            <End Role="Engagements" EntitySet="Engagements" />
+          </AssociationSet>
+          <AssociationSet Name="FehlzeitartenFehlzeiten" Association="MontageplanModel.FehlzeitartenFehlzeiten">
+            <End Role="Fehlzeitarten" EntitySet="Fehlzeitarten" />
+            <End Role="Fehlzeiten" EntitySet="Fehlzeiten" />
+          </AssociationSet>
+          <AssociationSet Name="MitarbeiterFehlzeiten" Association="MontageplanModel.MitarbeiterFehlzeiten">
+            <End Role="Mitarbeiter" EntitySet="MitarbeiterSatz" />
+            <End Role="Fehlzeiten" EntitySet="Fehlzeiten" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Engagements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KolonneId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EngagementsProjekte" Relationship="MontageplanModel.FK_EngagementId" FromRole="Engagements" ToRole="EngagementsProjekte" />
+          <NavigationProperty Name="EngagementsMitarbeiter" Relationship="MontageplanModel.FK_EngagementsId" FromRole="Engagements" ToRole="EngagementsMitarbeiter" />
+          <NavigationProperty Name="Kolonnen" Relationship="MontageplanModel.KolonnenEngagements" FromRole="Engagements" ToRole="Kolonnen" />
+        </EntityType>
+        <EntityType Name="EngagementsMitarbeiter">
+          <Key>
+            <PropertyRef Name="EngagementsId" />
+            <PropertyRef Name="MitarbeiterId" />
+          </Key>
+          <Property Name="EngagementsId" Type="Int32" Nullable="false" />
+          <Property Name="MitarbeiterId" Type="Int32" Nullable="false" />
+          <Property Name="IstFuehrer" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Engagements" Relationship="MontageplanModel.FK_EngagementsId" FromRole="EngagementsMitarbeiter" ToRole="Engagements" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="MontageplanModel.MitarbeiterEngagementsMitarbeiter" FromRole="EngagementsMitarbeiter" ToRole="Mitarbeiter" />
+        </EntityType>
+        <EntityType Name="EngagementsProjekte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="ProjektId" Nullable="false" Type="Int32" />
+          <Property Name="StartTime" Precision="3" Type="DateTime" />
+          <Property Name="EndTime" Precision="3" Type="DateTime" />
+          <NavigationProperty Name="Engagements" Relationship="MontageplanModel.FK_EngagementId" FromRole="EngagementsProjekte" ToRole="Engagements" />
+          <NavigationProperty Name="Projekte" Relationship="MontageplanModel.ProjekteEngagementsProjekte" FromRole="EngagementsProjekte" ToRole="Projekte" />
+          <Property Type="Int32" Name="EngagementId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fehlzeitarten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bezeichnung" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Fehlzeiten" Relationship="MontageplanModel.FehlzeitartenFehlzeiten" FromRole="Fehlzeitarten" ToRole="Fehlzeiten" />
+        </EntityType>
+        <EntityType Name="Fehlzeiten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FehlzeitartId" Type="Int32" Nullable="false" />
+          <Property Name="MitarbeiterId" Type="Int32" Nullable="false" />
+          <Property Name="Startdatum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Endedatum" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Fehlzeitarten" Relationship="MontageplanModel.FehlzeitartenFehlzeiten" FromRole="Fehlzeiten" ToRole="Fehlzeitarten" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="MontageplanModel.MitarbeiterFehlzeiten" FromRole="Fehlzeiten" ToRole="Mitarbeiter" />
+        </EntityType>
+        <EntityType Name="Funktionen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="MontageplanModel.FunktionenMitarbeiter" FromRole="Funktionen" ToRole="Mitarbeiter" />
+        </EntityType>
+        <EntityType Name="Kolonnen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nummer" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Bezeichnung" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="HexColor" Type="String" Nullable="false" MaxLength="9" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="KolonnenMitarbeiter" Relationship="MontageplanModel.FK_KolonneId" FromRole="Kolonnen" ToRole="KolonnenMitarbeiter" />
+          <NavigationProperty Name="Engagements" Relationship="MontageplanModel.KolonnenEngagements" FromRole="Kolonnen" ToRole="Engagements" />
+        </EntityType>
+        <EntityType Name="KolonnenMitarbeiter">
+          <Key>
+            <PropertyRef Name="MitarbeiterId" />
+            <PropertyRef Name="KolonneId" />
+          </Key>
+          <Property Name="MitarbeiterId" Type="Int32" Nullable="false" />
+          <Property Name="KolonneId" Type="Int32" Nullable="false" />
+          <Property Name="IstFuehrer" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Kolonnen" Relationship="MontageplanModel.FK_KolonneId" FromRole="KolonnenMitarbeiter" ToRole="Kolonnen" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="MontageplanModel.MitarbeiterKolonnenMitarbeiter" FromRole="KolonnenMitarbeiter" ToRole="Mitarbeiter" />
+        </EntityType>
+        <EntityType Name="MetaData">
+          <Key>
+            <PropertyRef Name="MetaKey" />
+          </Key>
+          <Property Name="MetaKey" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="400" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Vorname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="KannFuehrerSein" Type="Boolean" Nullable="false" />
+          <Property Name="FunktionId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="EngagementsMitarbeiter" Relationship="MontageplanModel.MitarbeiterEngagementsMitarbeiter" FromRole="Mitarbeiter" ToRole="EngagementsMitarbeiter" />
+          <NavigationProperty Name="Funktionen" Relationship="MontageplanModel.FunktionenMitarbeiter" FromRole="Mitarbeiter" ToRole="Funktionen" />
+          <NavigationProperty Name="KolonnenMitarbeiter" Relationship="MontageplanModel.MitarbeiterKolonnenMitarbeiter" FromRole="Mitarbeiter" ToRole="KolonnenMitarbeiter" />
+          <NavigationProperty Name="Fehlzeiten" Relationship="MontageplanModel.MitarbeiterFehlzeiten" FromRole="Mitarbeiter" ToRole="Fehlzeiten" />
+        </EntityType>
+        <EntityType Name="Projekte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Startdatum" Type="DateTime" Precision="3" />
+          <Property Name="Endedatum" Type="DateTime" Precision="3" />
+          <Property Name="HexColor" Type="String" Nullable="false" MaxLength="9" Unicode="true" FixedLength="true" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsTemplate" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EngagementsProjekte" Relationship="MontageplanModel.ProjekteEngagementsProjekte" FromRole="Projekte" ToRole="EngagementsProjekte" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="IsAdministrator" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EngagementId">
+          <End Type="MontageplanModel.Engagements" Multiplicity="1" Role="Engagements">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MontageplanModel.EngagementsProjekte" Multiplicity="*" Role="EngagementsProjekte" />
+        </Association>
+        <Association Name="FK_EngagementsId">
+          <End Role="Engagements" Type="MontageplanModel.Engagements" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EngagementsMitarbeiter" Type="MontageplanModel.EngagementsMitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engagements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EngagementsMitarbeiter">
+              <PropertyRef Name="EngagementsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KolonneId">
+          <End Role="Kolonnen" Type="MontageplanModel.Kolonnen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KolonnenMitarbeiter" Type="MontageplanModel.KolonnenMitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kolonnen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KolonnenMitarbeiter">
+              <PropertyRef Name="KolonneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MitarbeiterEngagementsMitarbeiter">
+          <End Type="MontageplanModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="1" />
+          <End Type="MontageplanModel.EngagementsMitarbeiter" Role="EngagementsMitarbeiter" Multiplicity="*" />
+        </Association>
+        <Association Name="FunktionenMitarbeiter">
+          <End Type="MontageplanModel.Funktionen" Role="Funktionen" Multiplicity="1" />
+          <End Type="MontageplanModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="*" />
+        </Association>
+        <Association Name="MitarbeiterKolonnenMitarbeiter">
+          <End Type="MontageplanModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="1" />
+          <End Type="MontageplanModel.KolonnenMitarbeiter" Role="KolonnenMitarbeiter" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjekteEngagementsProjekte">
+          <End Type="MontageplanModel.Projekte" Multiplicity="1" Role="Projekte" />
+          <End Type="MontageplanModel.EngagementsProjekte" Multiplicity="*" Role="EngagementsProjekte" />
+        </Association>
+        <Association Name="KolonnenEngagements">
+          <End Type="MontageplanModel.Kolonnen" Role="Kolonnen" Multiplicity="1" />
+          <End Type="MontageplanModel.Engagements" Role="Engagements" Multiplicity="*" />
+        </Association>
+        <Association Name="FehlzeitartenFehlzeiten">
+          <End Type="MontageplanModel.Fehlzeitarten" Role="Fehlzeitarten" Multiplicity="1" />
+          <End Type="MontageplanModel.Fehlzeiten" Role="Fehlzeiten" Multiplicity="*" />
+        </Association>
+        <Association Name="MitarbeiterFehlzeiten">
+          <End Type="MontageplanModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="1" />
+          <End Type="MontageplanModel.Fehlzeiten" Role="Fehlzeiten" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="MontageplanModelStoreContainer" CdmEntityContainer="MontageplanEntities">
+          <EntitySetMapping Name="Engagements">
+            <EntityTypeMapping TypeName="MontageplanModel.Engagements">
+              <MappingFragment StoreEntitySet="Engagements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KolonneId" ColumnName="KolonneId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngagementsMitarbeiter">
+            <EntityTypeMapping TypeName="MontageplanModel.EngagementsMitarbeiter">
+              <MappingFragment StoreEntitySet="EngagementsMitarbeiter">
+                <ScalarProperty Name="EngagementsId" ColumnName="EngagementsId" />
+                <ScalarProperty Name="MitarbeiterId" ColumnName="MitarbeiterId" />
+                <ScalarProperty Name="IstFuehrer" ColumnName="IstFuehrer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngagementsProjekte">
+            <EntityTypeMapping TypeName="MontageplanModel.EngagementsProjekte">
+              <MappingFragment StoreEntitySet="EngagementsProjekte">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProjektId" ColumnName="ProjektId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fehlzeitarten">
+            <EntityTypeMapping TypeName="MontageplanModel.Fehlzeitarten">
+              <MappingFragment StoreEntitySet="Fehlzeitarten">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bezeichnung" ColumnName="Bezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fehlzeiten">
+            <EntityTypeMapping TypeName="MontageplanModel.Fehlzeiten">
+              <MappingFragment StoreEntitySet="Fehlzeiten">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FehlzeitartId" ColumnName="FehlzeitartId" />
+                <ScalarProperty Name="MitarbeiterId" ColumnName="MitarbeiterId" />
+                <ScalarProperty Name="Startdatum" ColumnName="Startdatum" />
+                <ScalarProperty Name="Endedatum" ColumnName="Endedatum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funktionen">
+            <EntityTypeMapping TypeName="MontageplanModel.Funktionen">
+              <MappingFragment StoreEntitySet="Funktionen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kolonnen">
+            <EntityTypeMapping TypeName="MontageplanModel.Kolonnen">
+              <MappingFragment StoreEntitySet="Kolonnen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nummer" ColumnName="Nummer" />
+                <ScalarProperty Name="Bezeichnung" ColumnName="Bezeichnung" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HexColor" ColumnName="HexColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KolonnenMitarbeiter">
+            <EntityTypeMapping TypeName="IsTypeOf(MontageplanModel.KolonnenMitarbeiter)">
+              <MappingFragment StoreEntitySet="KolonnenMitarbeiter">
+                <ScalarProperty Name="KolonneId" ColumnName="KolonneId" />
+                <ScalarProperty Name="MitarbeiterId" ColumnName="MitarbeiterId" />
+                <ScalarProperty Name="IstFuehrer" ColumnName="IstFuehrer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetaData">
+            <EntityTypeMapping TypeName="MontageplanModel.MetaData">
+              <MappingFragment StoreEntitySet="MetaData">
+                <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projekte">
+            <EntityTypeMapping TypeName="MontageplanModel.Projekte">
+              <MappingFragment StoreEntitySet="Projekte">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Startdatum" ColumnName="Startdatum" />
+                <ScalarProperty Name="Endedatum" ColumnName="Endedatum" />
+                <ScalarProperty Name="HexColor" ColumnName="HexColor" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MontageplanModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsAdministrator" ColumnName="IsAdministrator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_EngagementId" TypeName="MontageplanModel.FK_EngagementId" StoreEntitySet="EngagementsProjekte">
+            <EndProperty Name="Engagements">
+              <ScalarProperty Name="Id" ColumnName="EngagementId" />
+            </EndProperty>
+            <EndProperty Name="EngagementsProjekte">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_EngagementsId" TypeName="MontageplanModel.FK_EngagementsId" StoreEntitySet="EngagementsMitarbeiter">
+            <EndProperty Name="Engagements">
+              <ScalarProperty Name="Id" ColumnName="EngagementsId" />
+            </EndProperty>
+            <EndProperty Name="EngagementsMitarbeiter">
+              <ScalarProperty Name="EngagementsId" ColumnName="EngagementsId" />
+              <ScalarProperty Name="MitarbeiterId" ColumnName="MitarbeiterId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_KolonneId" TypeName="MontageplanModel.FK_KolonneId" StoreEntitySet="KolonnenMitarbeiter">
+            <EndProperty Name="Kolonnen">
+              <ScalarProperty Name="Id" ColumnName="KolonneId" />
+            </EndProperty>
+            <EndProperty Name="KolonnenMitarbeiter">
+              <ScalarProperty Name="MitarbeiterId" ColumnName="MitarbeiterId" />
+              <ScalarProperty Name="KolonneId" ColumnName="KolonneId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="MitarbeiterSatz">
+            <EntityTypeMapping TypeName="IsTypeOf(MontageplanModel.Mitarbeiter)" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+              <MappingFragment StoreEntitySet="Mitarbeiter">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FunktionId" ColumnName="FunktionId" />
+                <ScalarProperty Name="KannFuehrerSein" ColumnName="KannFuehrerSein" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <GridView x:Key="holidayGridView">
+
+        <GridViewColumn Width="200">
+            <GridViewColumn.Header>
+                <GridViewColumnHeader Content="Bezeichnung" HorizontalContentAlignment="Left" />
+            </GridViewColumn.Header>
+            <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Bezeichnung}" />
+                </DataTemplate>
+            </GridViewColumn.CellTemplate>
+        </GridViewColumn>
+
+        <GridViewColumn Width="100">
+            <GridViewColumn.Header>
+                <GridViewColumnHeader Content="Startdatum" HorizontalContentAlignment="Left" />
+            </GridViewColumn.Header>
+            <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Startdatum}" />
+                </DataTemplate>
+            </GridViewColumn.CellTemplate>
+        </GridViewColumn>
+
+        <GridViewColumn Width="100">
+            <GridViewColumn.Header>
+                <GridViewColumnHeader Content="Endedatum" HorizontalContentAlignment="Left" />
+            </GridViewColumn.Header>
+            <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Endedatum}" />
+                </DataTemplate>
+            </GridViewColumn.CellTemplate>
+        </GridViewColumn>
+
+    </GridView>
+
+
+
+</ResourceDictionary>

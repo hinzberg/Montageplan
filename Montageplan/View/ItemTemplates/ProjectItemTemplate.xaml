@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="projectTemplate">
+        <Grid Margin="0">
+            <Grid Background="White" Margin="2,0,3,0">
+                <Grid Height="50" Background="{Binding ProjectColorBrush}">
+                    <DockPanel Grid.Column="1" VerticalAlignment="Center"  Margin="10,0,0,0" >
+                        <TextBlock Name="bezTextBlock" Text="{Binding Bezeichnung}"  FontWeight="Bold" DockPanel.Dock="Top"
+                           TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"  >
+                            <TextBlock.Foreground>
+                                <SolidColorBrush x:Name="bezTextBrush" Color="Black" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Name="dateTextBlock" DockPanel.Dock="Top" Text="{Binding DateSpan}">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush x:Name="dateTextBrush" Color="Black" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Name="timeTextBlock" DockPanel.Dock="Top" Text="{Binding TimeSpan}" Margin="0,2,0,0">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush x:Name="timeTextBrush" Color="Black" />
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </DockPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+        
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Status}" Value="Idle">
+                <Setter TargetName="bezTextBlock" Property="Foreground" Value="Red" />
+                <Setter TargetName="dateTextBlock" Property="Foreground" Value="Red" />
+                <Setter TargetName="timeTextBlock" Property="Foreground" Value="Red" />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Status}" Value="Warning">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="bezBrushStory">
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetName="bezTextBrush"
+                                Storyboard.TargetProperty="Color"
+                                RepeatBehavior="Forever"
+                                AutoReverse="True"
+                                From="Black"
+                                To="Red" Duration="0:0:0.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="bezBrushStory" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Status}" Value="Warning">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard x:Name="dateBrushStory" >
+                            <Storyboard>
+                                <ColorAnimation
+                                Storyboard.TargetName="dateTextBrush"
+                                Storyboard.TargetProperty="Color"
+                                RepeatBehavior="Forever"
+                                AutoReverse="True"
+                                From="Black"
+                                To="Red" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="zeitBrushStory" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Status}" Value="Warning">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="timeBrushStory" >
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetName="timeTextBrush"
+                                Storyboard.TargetProperty="Color"
+                                RepeatBehavior="Forever"
+                                AutoReverse="True"
+                                From="Black"
+                                To="Red" Duration="0:0:0.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="zeitBrushStory" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

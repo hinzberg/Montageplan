@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configs version="1.0" time="21.10.2013 14:35">
+  <KalenderTageAusrichtung>DynamicWidth</KalenderTageAusrichtung>
+  <StartDatumDruck>05.08.2013 00:00:00</StartDatumDruck>
+  <EndeDatumDruck>16.08.2013 00:00:00</EndeDatumDruck>
+  <MitarbeiterDisplayWithBezeichnung>True</MitarbeiterDisplayWithBezeichnung>
+  <MitarbeiterDisplayWithName>False</MitarbeiterDisplayWithName>
+  <MitarbeiterDisplayWithVorname>True</MitarbeiterDisplayWithVorname>
+  <ShowKolonnePrefix>True</ShowKolonnePrefix>
+  <DayBrush>#C8FF0000</DayBrush>
+  <SeitenAbstandX>12</SeitenAbstandX>
+  <SeitenAbstandY>12</SeitenAbstandY>
+</configs>
